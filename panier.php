@@ -12,6 +12,10 @@
     .form-toggle{
         border: 1px solid black;
     }
+    .bd-input{
+        border: 0;
+        border-bottom: 2px solid #fff;
+    }
     .row-form{
         background-color: rgb(238, 238, 238);
         border-radius: 20px;
@@ -145,35 +149,35 @@
                     <form action="#" method="post">
                         <legend>Shipping Details</legend>
                         <div class="row mt-2">
-                            <div class="col">
+                            <div class="col text-light">
                                 <label class="form-label" for="first_name">First Name</label>
-                                <input class="form-control" type="text" name="first_name" id="first_name" placeholder="Jane" required>
+                                <input class="form-control bd-input bg-success text-light" type="text" name="first_name" id="first_name" value="Jane" required>
                             </div>
                             <div class="col">
                                 <label class="form-label" for="last_name">Last Name</label>
-                                <input class="form-control" type="text" name="last_name" id="last_name" placeholder="Doe" required>
+                                <input class="form-control bd-input bg-success text-light" type="text" name="last_name" id="last_name" value="Doe" required>
                             </div>
                         </div>
                         <div class="mt-2">
                             <label class="form-label" for="mail">Email</label>
-                            <input class="form-control" type="text" name="mail" id="mail" placeholder="jane.doe@gmail.com" required>
+                            <input class="form-control bd-input bg-success text-light" type="text" name="mail" id="mail" value="jane.doe@gmail.com" required>
                         </div>
                         <div class="mt-2">
                             <label class="form-label" for="phone">Phone</label>
-                            <input class="form-control" type="text" name="phone" id="phone" placeholder="+1 317 404 5562" required>
+                            <input class="form-control bd-input bg-success text-light" type="text" name="phone" id="phone" value="+1 317 404 5562" required>
                         </div>
                         <div class="mt-2">
                             <label class="form-label" for="addresse">Addresse</label>
-                            <input class="form-control" type="text" name="addresse" id="address" placeholder="123 Grazing Street" required>
+                            <input class="form-control bd-input bg-success text-light" type="text" name="addresse" id="address" value="123 Grazing Street" required>
                         </div>
                         <div class="row mt-2">
                             <div class="col">
                                 <label class="form-label" for="code_post">Postal Code</label>
-                                <input class="form-control" type="text" name="code_post" id="code_post" placeholder="12345" required>
+                                <input class="form-control bd-input bg-success text-light" type="text" name="code_post" id="code_post" value="12345" required>
                             </div>
                             <div class="col">
                                 <label class="form-label" for="country">Country/Région</label>
-                                <select name="country" id="country" class="form-control">
+                                <select name="country" id="country" class="form-control bd-input bg-success text-light">
                                     <option value="#">Nigéria</option>
                                     <option value="#">Bénin</option>
                                     <option value="#">Pays-Bas</option>
@@ -193,6 +197,7 @@
                 </div>
             </div>
         </div>
+        <?php require "footer.php" ?>
     </div>
 </body>
 </html>
