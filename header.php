@@ -29,7 +29,7 @@
                 <i class="fa fa-map-marker bg-success p-2 bd"><span class="px-2">Géolocation</span></i>
             </span>
             <span class="mx-2">
-                <i class="fa fa-user bg-success p-2 bd"><span class="px-2">Plublier une annonce</span></i>
+                <i class="fa fa-bullhorn bg-success p-2 bd"><span class="px-2">Plublier une annonce</span></i>
             </span>
             <span class="mx-2">
                 <i class="fa fa-bell"></i>
