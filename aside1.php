@@ -23,7 +23,7 @@
                 <span class="mx-4"><input type="checkbox" name="#" id="#"checked></span>
             </div>
             <div>
-                <span class="">Nouveau</span>
+                <span class="pr-4">Nouveau</span>
                 <span class="mx-4"><input type="checkbox" name="#" id="#" checked></span>
             </div>
         </div>
@@ -38,12 +38,12 @@
             </div>
         </div>
         <div class="row hide1" id="hide1">
-            <div>
+            <div >
                 <span class="">Produit Bios</span>
                 <span class="mx-4"><input type="checkbox" name="#" id="#" checked></span>
             </div>
-            <div>
-                <span class="">Lait</span>
+            <div class="">
+                <span class="pr-5">Lait</span>
                 <span class="mx-4"><input type="checkbox" name="#" id="#" checked></span>
             </div>
         </div>
