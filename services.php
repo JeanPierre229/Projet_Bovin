@@ -40,6 +40,12 @@
     .padding-filter-new{
         margin-bottom: 150px;
     }
+    .hide{
+        display: none;
+    }
+    .hide1{
+        display: none;
+    }
 </style>
 <body class="container">
     <header>            
@@ -135,5 +141,26 @@
     </footer>
 </body>
 </html>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+<script>
+    const before = document.getElementById('text-view');
+    const after =  document.getElementById('text-hide');
+
+    before.addEventListener('click', function(){
+        if(after.style.display === 'none'){
+            after.style.display = 'block';
+        }else{
+            after.style.display = 'none';
+        }
+    });
+
+    const before1 = document.getElementById('view1');
+    const after1 =  document.getElementById('hide1');
+
+    before1.addEventListener('click', function(){
+        if(after1.style.display === 'none'){
+            after1.style.display = 'block';
+        }else{
+            after1.style.display = 'none';
+        }
+    });
+</script>

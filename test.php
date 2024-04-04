@@ -7,25 +7,47 @@
     <!-- Inclure les fichiers CSS de Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
+<style>
+    .text-hidden{
+        display: none;
+    }
+</style>
 <body>
     <div class="container mt-5">
         <!-- Dropdown -->
-        <div class="dropdown">
-            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                Actions
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <li><a class="dropdown-item" href="#">Action 1</a></li>
-                <li><a class="dropdown-item" href="#">Action 2</a></li>
-                <li><a class="dropdown-item" href="#">Action 3</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Autre action</a></li>
-            </ul>
+        <button id="boutonAfficher">Afficher le contenu</button>
+        <div id="contenuCache" style="display: none;">
+             Contenu à afficher ou cacher
         </div>
-    </div>
+        <div>
+            <p>Je suis un autre paragrpahe</p>
+        </div>
+        <div>
+            <p>Je suis un autre paragrpahe</p>
+        </div>
+        <div>
+            <p>Je suis un autre paragrpahe</p>
+        </div>
+        <div>
+            <p>Je suis un autre paragrpahe</p>
+        </div>
 
-    <!-- Inclure les fichiers JavaScript de Bootstrap 5 (popper.js requis pour les dropdowns) -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    </div>
 </body>
 </html>
+
+<script>
+    //document.addEventListener("DOMContentLoaded", function() {
+        var boutonAfficher = document.getElementById("boutonAfficher");
+        var contenuCache = document.getElementById("contenuCache");
+
+        boutonAfficher.addEventListener("click", function() {
+            if (contenuCache.style.display === "none") {
+                contenuCache.style.display = "block";
+            } else {
+                contenuCache.style.display = "none";
+            }
+        });
+    //});
+</script>
+

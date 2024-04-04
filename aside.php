@@ -11,6 +11,9 @@
         border: 0;
         box-shadow: none;
     }
+    .hide1{
+        display: none;
+    }
 </style>
 <aside>
     <h3>Filter Options</h3>
@@ -35,28 +38,24 @@
             <option value="#" selected>Nutrients Levels</option>
         </select>
     </div>
-    <div class="dropdown">
-            <p class="mx-3" data-bs-toggle="dropdown" aria-expanded="false">
-                Protein Content
-                <i class="fa fa-angle-down px-2"></i>
-            </p>
-            <div class="dropdown-menu b-s" aria-labelledby="dropdownMenuButton">
-                <div class="row">
-                    <div>
-                        <input type="checkbox" class="mt-2" name="b" id="b" checked>
-                    </div>
-                    <div>
-                        <a class="dropdown-item" href="#">Energy Boosting</a>
-                    </div>
-                </div>
-                <div class="row mt-2">
-                    <div>
-                        <input type="checkbox" name="b" class="mt-2" id="b" checked>
-                    </div>
-                    <div>
-                        <a class="dropdown-item" href="#">Natural Ingredients</a>
-                    </div>
-                </div>
+    <div class="my-2">
+        <div class="row mt-3">
+            <div>
+                <h5 class="" id="view1">Protein Content</h5>
             </div>
+            <div>
+                <i class="fa fa-angle-down px-3"></i>
+            </div>
+        </div>
+        <div class="row hide1" id="hide1">
+            <div>
+                <span class="mx-1"><input type="checkbox" name="#" id="#" checked></span>
+                <span class="">Energy Boosting</span>
+            </div>
+            <div>
+                <span class="mx-1"><input type="checkbox" name="#" id="#" checked></span>
+                <span class="">Natural Ingredients</span>
+            </div>
+        </div>
     </div>
 </aside>
