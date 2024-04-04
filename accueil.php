@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accueil - WaxangariLabs</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/font-awesome.css">
 </head>
@@ -39,12 +39,12 @@
         border-radius: 10px;
     }
 </style>
-<body>
-    <div class="container">
-        <div class="row">
-            <?php require "header.php"; ?>
-        </div>
-        <div class="row bg">
+<body class="container">
+    <header>
+        <?php require_once(__DIR__.'/header.php') ?>
+    </header>
+    <main>
+        <div class="row bg mt-3">
             <div class="p-5 m-5 col-4">
                 <h3 class="text-success"><strong>BovinSolution</strong></h3>
                 <p class="text-light mb-5">
@@ -86,7 +86,7 @@
                     <button class="btn btn-success px-3 py-0">Ajouter au panier</button>
                 </p>
             </div>
-            <div class="mx-5 p-0" style="border: 1px solid gray; border-radius: 15px;">
+            <div class="mx-5 p-2" style="border: 1px solid gray; border-radius: 15px;">
                 <p class='text-center'>
                     <img src="images/oeuf.png" alt="Une image d'oeuf" id="img-ac" class="img">
                 </p>
@@ -95,7 +95,7 @@
                     <button class="btn btn-success px-3 py-0">Ajouter au panier</button>
                 </p>
             </div>
-            <div class="mx-5 p-0" style="border: 1px solid gray; border-radius: 15px;">
+            <div class="mx-5 p-2" style="border: 1px solid gray; border-radius: 15px;">
                 <p class='text-center'>
                     <img src="images/poisson.png" alt="Une image d'oeuf" id="img-ac" class="img">
                 </p>
@@ -184,7 +184,9 @@
                 </div>
             </div>
         </div>
+    </main>
+    <footer>
         <?php require "footer.php"; ?>
-    </div>
+    </footer>
 </body>
 </html>

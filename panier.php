@@ -41,7 +41,7 @@
             <?php require "header.php"; ?>
         </div>
         <div class="row my-3 p-2 justify-content-between">
-            <div class="col-7 row-form">
+            <div class="col-lg-7 col-md-12 col-12 row-form px-4 py-4">
                 <div>
                     <h4 class="text-success">Mon panier</h4>
                 </div>
@@ -75,7 +75,7 @@
                         </p>
                     </div>
                     <div class="col-3 my-5">
-                        <p class="form-toggle col-3 rad bg-light">1</p>
+                        <p class="form-toggle col-4 rad bg-light">1</p>
                     </div>
                     <div class="col my-5">
                         <div class="row">
@@ -100,7 +100,7 @@
                         </p>
                     </div>
                     <div class="col-3 my-5">
-                        <p class="form-toggle col-3 rad bg-light">4</p>
+                        <p class="form-toggle col-4 rad bg-light">4</p>
                     </div>
                     <div class="col my-5">
                         <div class="row">
@@ -119,13 +119,13 @@
                         <h6 class="">Red</h6>
                     </div>
                     <div class="col-3 my-5">
-                        <p class="form-toggle col-6 rad bg-light">
+                        <p class="form-toggle col-7 rad bg-light">
                             <a href="#" class="">3m</a>
                             <a href="#" class="dropdown-toggle"></a>
                         </p>
                     </div>
                     <div class="col-3 my-5">
-                        <p class="form-toggle col-3 rad bg-light">1</p>
+                        <p class="form-toggle col-4 rad bg-light">1</p>
                     </div>
                     <div class="col my-5">
                         <div class="row">
@@ -141,7 +141,7 @@
                     <p class="text-right"><strong>Total: </strong> $37.17</p>
                 </div>
             </div>
-            <div class="col-4 bg-success my-5 rad text-light p-3">
+            <div class="col-lg-4 col-md-12 col-12 bg-success my-5 rad text-light p-3">
                 <div>
                     <p>Checkout: </p>
                 </div>

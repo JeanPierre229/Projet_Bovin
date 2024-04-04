@@ -52,14 +52,14 @@
                     </form>
                 </div>
                 <div class="col-6">
-                    <div class="text-center">
+                    <div class="text-center my-2">
                         <img class="img w-75" src="images/bovin_inscription.png" alt="image sur la page d'inscription">
                     </div>
-                    <div>
+                    <div class="mx-5">
                         <input type="checkbox">
                         <label for="accepter_condition">J'accepte les termes de confidentialité du site</label>
                     </div>
-                    <div>
+                    <div class="mx-5">
                         <input type="checkbox">
                         <label for="accepter_newsletter">Je souhaite m'inscrire à la newsletter</label>
                     </div>

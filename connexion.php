@@ -8,20 +8,32 @@
     <link rel="stylesheet" href="css/font-awesome.css">
     <title>Connexion - WaxangariLabs</title>
 </head>
+<style>
+    .row-form{
+        border: 0;
+        background-color: rgb(238, 238, 238);
+        border-radius: 20px;
+        height: 20%;
+    }
+    .img-form{
+        width: 60%;
+        height: 60%;
+    }
+</style>
 <body>
     <section class="my-5">
-        <h1 class="text-center">Connexion à <span class="text-success">BovinSolution</span></h1>
         <div class="container my-5">
+            <h1 class="text-center">Connexion à <span class="text-success">BovinSolution</span></h1>
             <div class="row">
-                <div class="col-6">
+                <div class="col-lg-6 col-md-12 col-12">
                     <form action="submit_inscription.php" method="post">
-                        <div class="my-4">
+                        <div class="mt-5 mb-4">
                             <label class="form-label" for="email"><strong>Email</strong></label>
-                            <input class="form-control input_color" type="email" placeholder="Ex : johndoe@gmail.com" name="email" id="email" required>
+                            <input class="form-control row-form py-3" type="email" placeholder="Ex : johndoe@gmail.com" name="email" id="email" required>
                         </div>
-                        <div class="my-4">
+                        <div class="mt-2 mb-4">
                             <label class="form-label" for="mot_de_passe"><strong>Mot de passe</strong></label>
-                            <input class="form-control input_color" type="password" placeholder="Ex : ******" name="mot_de_passe" id="mot_de_passe" required>
+                            <input class="form-control row-form py-3" type="password" placeholder="Ex : ******" name="mot_de_passe" id="mot_de_passe" required>
                         </div>
                         <div class="my-2">
                             <input type="checkbox">
@@ -34,15 +46,15 @@
                         </div>
                     </form>
                 </div>
-                <div class="col-6">
+                <div class="col-lg-6 col-md-12 col-12">
                     <div>
-                        <img class="img w-50" src="images/bovin_connexion.png" alt="image sur la page d'inscription">
+                        <img class="img img-form" src="images/bovin_connexion.png" alt="image sur la page d'inscription">
                     </div>
                 </div>
             </div>
             <div>
                 <div class="text-center">
-                    <button class="btn btn-success px-5 radius_bouton">Me connecter</button>
+                    <button class="btn btn-success px-5 text-dark radius_bouton form-control col-4"><strong>Me connecter</strong></button>
                 </div>
             </div>
         </div>

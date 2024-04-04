@@ -8,12 +8,12 @@
         border-radius: 10px;
     }
 </style>
-<header class="mt-3">
+<header class="mt-3 mx-auto">
     <div class="row justify-content-between">
-        <div class="row-2 mx-4 my-2">
+        <div class="row-1 mx-5 my-2 text-center">
             <img src="images/logo.png" alt="Logo de BovinSolution" class="img w-50">
         </div>
-        <div class="mx-3">
+        <div class="mx-3 my-3">
             <span class="mx-2">
                 <a href="#" id="ac">Accueil</a>
             </span>
@@ -24,7 +24,7 @@
                 <a href="#" id="ac">Notre annuaire</a>
             </span>
         </div>
-        <div>
+        <div class="my-3">
             <span class="mx-2">
                 <i class="fa fa-map-marker bg-success p-2 bd"><span class="px-2">Géolocation</span></i>
             </span>

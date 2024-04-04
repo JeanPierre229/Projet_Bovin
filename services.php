@@ -30,13 +30,24 @@
     .rad{
         border-radius: 40px;
     }
+    .b-s{
+        border: 0;
+        box-shadow: none;
+    }
+    .padding-filter{
+        margin-bottom: 100px;
+    }
+    .padding-filter-new{
+        margin-bottom: 150px;
+    }
 </style>
-<body>
-    <div class="container">
-        <div class="row">
-            <?php require "header.php"; ?>
-        </div>
-        <div class="row my-3">
+<body class="container">
+    <header>            
+        <?php require "header.php"; ?>
+    </header>
+    <main class="">
+        <div class="mx-auto">
+        <div class="row my-3 mx-5">
             <div>
                 <i class="fa fa-arrow-left" style="font-size: 35px;"></i>
             </div>
@@ -45,73 +56,8 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-4">
-                <aside>
-                    <div class="col-8">
-                        <ul class="list-unstyled form-toggle p-2 rad">
-                            <li class="">
-                                <a href="#" class="px-4">Filter by location</a>
-                                <a href="#" class="dropdown-toggle"></a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div>
-                        <p>
-                            <a href="#" class="px-4"><strong>Delivery status</strong></a>
-                            <a href="#" class="dropdown-toggle px-4" data-toggle="dropdown"></a>
-                        </p>
-                        <p class="col-8 px-4">
-                            <a href="#">Ships in 24h</a>
-                            <span class="text-right container">
-                                <input type="checkbox" class="text-right" checked>
-                            </span>
-                        </p>
-                        <p class="col-8 px-4">
-                            <a href="#">Ending soon</a>
-                            <span class="text-right container">
-                                <input type="checkbox" class="text-right" checked>
-                            </span>
-                        </p>
-                        <p class="col-8 px-4">
-                            <a href="#" class="pr-4">Nouveau</a>
-                            <span class="text-right container">
-                                <input type="checkbox" checked>
-                            </span>
-                        </p>
-                    </div>
-                    <div>
-                        <p>
-                            <a href="#" class="px-4"><strong>Catégorie de produits</strong></a>
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"></a>
-                        </p>
-                        <p class="col-8 px-4">
-                            <a href="#">Produit Bios</a>
-                            <span class="text-right container">
-                                <input type="checkbox" class="text-right" checked>
-                            </span>
-                        </p>
-                        <p class="col-8 px-4">
-                            <a href="#" class="px-4">Lait</a>
-                            <span class="text-right container">
-                                <input type="checkbox" checked>
-                            </span>
-                        </p>
-                    </div>
-                    <div>
-                        <p class="col-8 px-4">
-                            <a href="#"><strong>Product details</strong></a>
-                            <span class="text-right container">
-                                <i class="fa fa-angle-up" style="font-weight: bold;"></i>
-                            </span>
-                        </p>
-                        <p class="col-8 px-4">
-                            <a href="#" class="px-4 text-start"><strong>Valeurs</strong></a>
-                            <span class="text-right container">
-                                <i class="fa fa-angle-up" style="font-weight: bold;"></i>
-                            </span>
-                        </p>
-                    </div>
-                </aside>
+            <div class="col-5">
+                <?php require "aside1.php"; ?>
             </div>
             <div class="col-7">
                 <div class="row">
@@ -182,7 +128,12 @@
                 </div>
             </div>
         </div>
-        <?php require "footer.php" ?> 
-    </div>
+    </div> 
+    </main>
+    <footer>
+        <?php require "footer.php" ?>
+    </footer>
 </body>
 </html>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>

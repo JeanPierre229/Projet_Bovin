@@ -1,3 +1,7 @@
+*{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 15px;
+}
 .ctn-img div{
     display: flex;
     flex-direction: column;
