@@ -34,16 +34,20 @@
     .rad{
         border-radius: 40px;
     }
+    .input-form{
+        padding-right: 50px;
+        padding-left: 50px;
+    }
 </style>
-<body>
-    <div class="container">
-        <div class="row">
-            <?php require "header.php"; ?>
-        </div>
+<body class="container">
+    <header>
+        <?php require "header.php"; ?>
+    </header>
+    <main>
         <div class="row my-3 p-2 justify-content-between">
-            <div class="col-lg-7 col-md-12 col-12 row-form px-4 py-4">
+            <div class="col-lg-8 col-md-12 col-12 row-form px-5 py-4">
                 <div>
-                    <h4 class="text-success">Mon panier</h4>
+                    <h2 class="text-success"><strong>Mon panier</strong></h2>
                 </div>
                 <div class="row justify-content-between p-2">
                     <div class="">
@@ -69,13 +73,13 @@
                         <h6 class="">Beige</h6>
                     </div>
                     <div class="col-3 my-5">
-                        <p class="form-toggle col-6 rad bg-light">
-                            <a href="#" class="">M</a>
-                            <a href="#" class="dropdown-toggle"></a>
-                        </p>
+                        <select name="#" id="#" class="px-3 rad">
+                            <option value="#">M</option>
+                            <option value="#">F</option>
+                        </select>
                     </div>
                     <div class="col-3 my-5">
-                        <p class="form-toggle col-4 rad bg-light">1</p>
+                        <input type="number" min="0" class="px-2 rad col-4 input-form" name="quantite" id="quantite" placeholder="1">
                     </div>
                     <div class="col my-5">
                         <div class="row">
@@ -94,13 +98,13 @@
                         <h6 class="">Sliced</h6>
                     </div>
                     <div class="col-3 my-5">
-                        <p class="form-toggle col-7 rad bg-light">
-                            <a href="#" class="">1kg</a>
-                            <a href="#" class="dropdown-toggle"></a>
-                        </p>
+                        <select name="#" id="#" class="px-2 rad">
+                            <option value="#">1kg</option>
+                            <option value="#">2kg</option>
+                        </select>
                     </div>
                     <div class="col-3 my-5">
-                        <p class="form-toggle col-4 rad bg-light">4</p>
+                        <input type="number" min="0" class="px-2 rad col-4 input-form" name="quantite" id="quantite" placeholder="2">
                     </div>
                     <div class="col my-5">
                         <div class="row">
@@ -119,13 +123,13 @@
                         <h6 class="">Red</h6>
                     </div>
                     <div class="col-3 my-5">
-                        <p class="form-toggle col-7 rad bg-light">
-                            <a href="#" class="">3m</a>
-                            <a href="#" class="dropdown-toggle"></a>
-                        </p>
+                        <select name="#" id="#" class="px-3 rad">
+                            <option value="#">3m</option>
+                            <option value="#">4m</option>
+                        </select>
                     </div>
                     <div class="col-3 my-5">
-                        <p class="form-toggle col-4 rad bg-light">1</p>
+                        <input type="number" min="0" class="px-2 rad col-4 input-form" name="quantite" id="quantite" placeholder="1">
                     </div>
                     <div class="col my-5">
                         <div class="row">
@@ -141,7 +145,7 @@
                     <p class="text-right"><strong>Total: </strong> $37.17</p>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-12 col-12 bg-success my-5 rad text-light p-3">
+            <div class="col-lg-3 col-md-12 col-12 bg-success my-5 rad text-light p-3">
                 <div>
                     <p>Checkout: </p>
                 </div>
@@ -197,7 +201,9 @@
                 </div>
             </div>
         </div>
+    </main>
+    <footer>
         <?php require "footer.php" ?>
-    </div>
+    </footer>
 </body>
 </html>

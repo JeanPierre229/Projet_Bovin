@@ -12,8 +12,9 @@
     .input_edit{
         border: none;
         height: 50px;
+        padding-left: 20px;
         border-radius: 20px;
-        background-color: rgb(238,238,238);
+        background-color: rgb(200,200,200);
     }
 </style>
 <body class="container">
@@ -38,15 +39,15 @@
                     <legend><h3 class="text-success text-center"><strong>Contactez-nous</strong></h3></legend>
                     <div class="m-4">
                         <label for="nom_prenoms" class="form-label mx-4"><strong>Votre Nom et Prénoms</strong></label>
-                        <input type="text" class="form-control input_edit" name="nom_prenoms" id="nom_prenoms" placeholder="Ex : Ange TOGNON" required>
+                        <input type="text" class="form-control input_edit text-dark" name="nom_prenoms" id="nom_prenoms" value="Ex : Ange TOGNON" required>
                     </div>
                     <div class="m-4">
                         <label for="email" class="form-label mx-4"><strong>Email</strong></label>
-                        <input type="email" class="form-control input_edit" name="email" id="email" placeholder="angetognon@gmail.com" required>
+                        <input type="email" class="form-control input_edit text-dark" name="email" id="email" value="angetognon@gmail.com" required>
                     </div>
                     <div class="m-4">
                         <label for="message" class="form-label"><strong>Message</strong></label>
-                        <textarea class="form-control input_edit p-3" name="message" id="message" cols="30" rows="3" placeholder="Cliquer ici pour entrer votre message de plainte" required></textarea>
+                        <textarea class="form-control input_edit p-3 text-dark" name="message" id="message" cols="30" rows="3" placeholder="Cliquer ici pour entrer votre message de plainte" required></textarea>
                     </div>
                     <div class="text-center col-11">
                         <button class="btn btn-success m-4 form-control p-2">Envoyer</button>

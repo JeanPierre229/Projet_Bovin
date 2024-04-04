@@ -68,7 +68,7 @@
                     <input type="file" name="fichier" id="fichier" style="display: none;">
                 </div>
                 <div class="text-center mt-4">
-                    <button class="btn btn-success">Valider la publication</button>
+                    <button class="btn btn-success px-5 but">Valider la publication</button>
                 </div>
             </form>
         </section>

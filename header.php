@@ -8,7 +8,7 @@
         border-radius: 10px;
     }
 </style>
-<header class="mt-3 mx-auto">
+<header class="mt-5 mx-auto">
     <div class="row justify-content-between">
         <div class="row-1 mx-5 my-2 text-center">
             <img src="images/logo.png" alt="Logo de BovinSolution" class="img w-50">

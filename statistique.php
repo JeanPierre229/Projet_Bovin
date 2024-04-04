@@ -15,7 +15,7 @@
     .input-form{
         border: 0;
         border-radius: 20px;
-        background-color: rgb(238, 238, 238);
+        background-color: rgb(200, 200, 200);
     }
     .rad{
         border-radius: 20px;
@@ -83,7 +83,7 @@
                                 <p class="h5 text-light">Repas pour volaille</p>
                                 <p class="text-warning">7800 FCFA</p>
                             </div>
-                            <div class="bg-light rad my-3 px-3 py-2">
+                            <div class="div-form my-3 px-3 py-2">
                                 <form action="#" method="post">
                                     <legend class="text-center">Formulaire d'ajout d'un nouveau investissement</legend>
                                     <div class="mt-2">
