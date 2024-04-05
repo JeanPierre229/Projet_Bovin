@@ -1,53 +1,46 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dropdown Bootstrap 5</title>
-    <!-- Inclure les fichiers CSS de Bootstrap 5 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<style>
-    .text-hidden{
-        display: none;
-    }
-</style>
-<body>
-    <div class="container mt-5">
-        <!-- Dropdown -->
-        <button id="boutonAfficher">Afficher le contenu</button>
-        <div id="contenuCache" style="display: none;">
-             Contenu à afficher ou cacher
-        </div>
-        <div>
-            <p>Je suis un autre paragrpahe</p>
-        </div>
-        <div>
-            <p>Je suis un autre paragrpahe</p>
-        </div>
-        <div>
-            <p>Je suis un autre paragrpahe</p>
-        </div>
-        <div>
-            <p>Je suis un autre paragrpahe</p>
-        </div>
+<?php
+    if($image){
+        $upload = true;
+        $extension = array('jpg', 'png', 'jpeg', 'gif');
+        $image_ext = strtolower(pathinfo($image_path, PATHINFO_EXTENSION));
 
-    </div>
-</body>
-</html>
+        if(!in_array($image_ext, $extension)){
+            $imageErreur = "Le fichier doit être sous l'un de ces formats: .jpg, .png, .jpeg, et .gif";
+            $upload = false;
+        }
 
-<script>
-    //document.addEventListener("DOMContentLoaded", function() {
-        var boutonAfficher = document.getElementById("boutonAfficher");
-        var contenuCache = document.getElementById("contenuCache");
+        if(file_exists($image_path)){
+            $imageErreur = "Cette image existe déjà !";
+            $upload = false;
+        }
 
-        boutonAfficher.addEventListener("click", function() {
-            if (contenuCache.style.display === "none") {
-                contenuCache.style.display = "block";
-            } else {
-                contenuCache.style.display = "none";
+        if($_FILES["fichier"]["size"] > 500000){
+            $imageErreur = "Le fichier ne doit pas dépasser 500kb";
+            $upload = false;
+        }
+
+        $special_char = array("'", "/", "\\", ":", "<", ">");
+        if(preg_match('/[\'\/\\\\:<>\"]/', $image)){
+            $imageErreur = "Le nom du fichier ne doit pas contenir ces caractères: /, \\, :, < et >";
+            $upload = false;
+        }
+
+        if($upload){
+            if(!move_uploaded_file($_FILES["fichier"]["tmp_name"], $image_path)){
+                $imageErreur = "Erreur lors du chargement du fichier";
+                $upload = false;
             }
-        });
-    //});
-</script>
+        }
 
+        if($upload){
+            // Insertion dans la base de données seulement si l'upload est réussi
+            $connect = new PDO("mysql:host=localhost; dbname=bovin_solution", "root", "");
+            $requete = $connect->prepare("
+                INSERT INTO publication_$userId(titre, nom_prenoms, description, image)
+                VALUES('$titre','$nom_prenoms','$description','$image')
+            ");
+            $requete->execute();
+            header("Location: accueil.php");
+        }
+    }
+?>

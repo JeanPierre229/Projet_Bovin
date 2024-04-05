@@ -1,3 +1,74 @@
+<?php
+    session_start();
+    $userId = $_SESSION['id'];
+    function check( $donnee ){
+        $donnee = trim($donnee);
+        $donnee = stripslashes($donnee);
+        $donnee = htmlspecialchars($donnee);
+        return $donnee;
+    }
+
+    $titre = null;
+    $nom_prenoms = null;
+    $description = null;
+    $image = null;
+    $imageErreur = null;
+
+    if(!empty($_POST) && isset($_POST)){
+        $titre = check($_POST["titre"]);
+        $nom_prenoms = check($_POST["nom_prenoms"]);
+        $description = check($_POST["description"]);
+        $image = check($_FILES["fichier"]["name"]);
+        $image_path = 'images/img-pub/' . basename($image);
+        $image_ext = pathinfo($image_path, PATHINFO_EXTENSION);
+        $upload = false;
+
+        if($image){
+            $upload = true;
+            $extension = array('jpg', 'png', 'jpeg', 'gif');
+            $image_ext = strtolower(pathinfo($image_path, PATHINFO_EXTENSION));
+    
+            if(!in_array($image_ext, $extension)){
+                $imageErreur = "Le fichier doit être sous l'un de ces formats: .jpg, .png, .jpeg, et .gif";
+                $upload = false;
+            }
+    
+            if(file_exists($image_path)){
+                $imageErreur = "Cette image existe déjà !";
+                $upload = false;
+            }
+    
+            if($_FILES["fichier"]["size"] > 500000){
+                $imageErreur = "Le fichier ne doit pas dépasser 500kb";
+                $upload = false;
+            }
+    
+            $special_char = array("'", "/", "\\", ":", "<", ">");
+            if(preg_match('/[\'\/\\\\:<>\"]/', $image)){
+                $imageErreur = "Le nom du fichier ne doit pas contenir ces caractères: /, \\, :, < et >";
+                $upload = false;
+            }
+    
+            if($upload){
+                if(!move_uploaded_file($_FILES["fichier"]["tmp_name"], $image_path)){
+                    $imageErreur = "Erreur lors du chargement du fichier";
+                    $upload = false;
+                }
+            }
+    
+            if($upload){
+                // Insertion dans la base de données seulement si l'upload est réussi
+                $connect = new PDO("mysql:host=localhost; dbname=bovin_solution", "root", "");
+                $requete = $connect->prepare("
+                    INSERT INTO publication_$userId(titre, nom_prenoms, image, description)
+                    VALUES('$titre','$nom_prenoms','$image','$description')
+                ");
+                $requete->execute();
+                header("Location: accueil.php");
+            }
+        }
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,42 +107,43 @@
     <!-- 
         corps de page
     -->
-    <main class="row m-3">
-        <section class="col-5 p-1">
-            <img src="images/Image (29).png" alt="Une image de profil" class="img w-100 mb-5">
-            <strong class="">Petite description de la publication</strong>
-            <textarea class="mt-4 p-4" name="description" id="description" cols="40" rows="5" placeholder="Cliquer ici pour décrire"></textarea>
-        </section>
-
-        <section class="col-7 mt-5">
-            <h4 class="text-center">
-                Publiez une annonce sur notre site afin de gagner en visibilité 
-                sur vos services
-            </h4>
-            <form action="#" method="post">
-                <h3><legend class="text-center text-success mt-4">FORMULAIRE DE PUBLILCATION</legend></h3>
-                <div class="mt-4">
-                    <label for="titre_publication" class="form-label">
-                        <strong>Titre de la publication</strong>
-                    </label>
-                    <input type="text" class="form-control input py-4" placeholder="Ex: Formation en élévage de poisson">
+    <main>
+        <form action="publier_annonce.php" method="post" enctype="multipart/form-data">
+            <div class="row m-3">
+                <div class="col-5 p-1">
+                    <img src="images/Image (29).png" alt="Une image de profil" class="img w-100 mb-5">
+                    <strong class="">Petite description de la publication</strong>
+                    <textarea class="mt-4 p-4" name="description" id="description" cols="40" rows="5" placeholder="Cliquer ici pour décrire" required></textarea>
                 </div>
-                <div class="mt-2 mt-4">
-                    <label for="titre_publication" class="form-label">
-                        <strong>Votre Nom et Prénoms</strong>
-                    </label>
-                    <input type="text" class="form-control input py-4" placeholder="Ex: John Doe">
+                <div class="col-7 mt-5">
+                    <h4 class="text-center">
+                        Publiez une annonce sur notre site afin de gagner en visibilité 
+                        sur vos services
+                    </h4>
+                    <h3><legend class="text-center text-success mt-4">FORMULAIRE DE PUBLILCATION</legend></h3>
+                    <div class="mt-4">
+                        <label for="titre_publication" class="form-label">
+                            <strong>Titre de la publication</strong>
+                        </label>
+                        <input type="text" name="titre" class="form-control input py-4" placeholder="Ex: Formation en élévage de poisson" required>
+                    </div>
+                    <div class="mt-2 mt-4">
+                        <label for="titre_publication" class="form-label">
+                            <strong>Votre Nom et Prénoms</strong>
+                        </label>
+                        <input type="text" name="nom_prenoms" class="form-control input py-4" placeholder="Ex: John Doe" required>
+                    </div>
+                    <div class="row mt-2 mt-4">
+                        <div class="col-8"><strong>Importer une photo pour la publication</strong></div>
+                        <div class="col-2"><button class="btn btn-success py-0 but" id="import-file">Import</button></div>
+                        <input type="file" name="fichier" id="fichier" style="display: none;">
+                    </div>
+                    <div class="text-center mt-4">
+                        <button class="btn btn-success px-5 but">Valider la publication</button>
+                    </div>
                 </div>
-                <div class="row mt-2 mt-4">
-                    <div class="col-8"><strong>Importer une photo pour la publication</strong></div>
-                    <div class="col-2"><button class="btn btn-success py-0 but" id="import-file">Import</button></div>
-                    <input type="file" name="fichier" id="fichier" style="display: none;">
-                </div>
-                <div class="text-center mt-4">
-                    <button class="btn btn-success px-5 but">Valider la publication</button>
-                </div>
-            </form>
-        </section>
+            </div>
+        </form>
     </main>
 
     <hr>
