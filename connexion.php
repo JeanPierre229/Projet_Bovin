@@ -29,26 +29,6 @@
         }else{
             $errorConnect = "Votre mail n'est pas valide !";
         }
-        //Création de la table panier pour chaque utilisateur de notre plateforme
-        $userId = $_SESSION['id'];
-        
-        $connect = new PDO('mysql: host=localhost; dbname=bovin_solution','root','');
-        $requete2 = $connect->prepare("
-            CREATE TABLE IF NOT EXISTS panier_$userId (
-                id int(11) PRIMARY KEY AUTO_INCREMENT,
-                first_name varchar(200),
-                last_name varchar(200),
-                mail varchar(500),
-                tel varchar(200),  
-                addresse varchar(200),
-                post_code varchar(200),
-                country varchar(200),
-                type varchar(50),
-                quantite int(11), 
-                prix int(11)
-            )"
-        );
-        $requete2->execute();
 
     }
 
@@ -89,11 +69,11 @@
                 <div class="row">
                     <div class="col-lg-6 col-md-12 col-12">
                             <?php if($errorConnect){ ?>
-                                <p class="alert alert-danger">
+                                <p class="alert alert-danger mt-5">
                                     <?= $errorConnect ?>
                                 </p>
                             <?php } ?>
-                            <div class="mt-5 mb-4">
+                            <div class="mb-4">
                                 <label class="form-label" for="email"><strong>Email</strong></label>
                                 <input class="form-control row-form py-3" type="text" placeholder="Ex : johndoe@gmail.com" name="email" id="email" required>
                             </div>
@@ -106,6 +86,9 @@
                                 <label for="connect">Rester connecté(e)</label>
                             </div>
                             <div>
+                                <p>
+                                    Vous n'avez pas encore un compte ? <span><a href="inscription.php" class="text-success">S'inscrire !</a></span>
+                                </p>
                                 <p>
                                     Vous avez oublié votre mot de passe ? <span><a href="#" class="text-success">Cliquer ici</a></span>
                                 </p>

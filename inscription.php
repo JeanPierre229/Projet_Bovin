@@ -1,4 +1,5 @@
 <?php
+    session_start();
     $nomPrenoms = null;
     $ville = null;
     $telephone = null;
@@ -34,29 +35,43 @@
                         $motDePasse, $_POST['access'], $_POST['inscrit'] 
                         )
                 );
+                $userId = $connect->lastInsertId();
+                
                 header("Location: connexion.php");
             }else{
                 $mpError = "Mots de passe non identiques, Rééssayez...";
             }
+            //Création de la table panier pour chaque utilisateur de notre plateforme
+            
+            $requete3 = $connect->prepare("
+                CREATE TABLE IF NOT EXISTS panier_$userId (
+                    id int(11) PRIMARY KEY AUTO_INCREMENT,
+                    first_name varchar(200),
+                    last_name varchar(200),
+                    mail varchar(500),
+                    tel varchar(200),  
+                    addresse varchar(200),
+                    post_code varchar(200),
+                    country varchar(200),
+                    type varchar(50),
+                    quanti4e int(11), 
+                    prix int(11)
+                )"
+            );
+            $requete3->execute();
 
-            // $connect = new PDO('mysql: host=localhost; dbname=bovin_solution', 'root',"");
-            // $requete = $connect->prepare("SHOW TABLES LIKE 'panier_?';");
-            // $requete->execute();
+            //Création de la table publication pour chaque utilisateur de notre plateforme
+            $requete4 = $connect->prepare("
+                CREATE TABLE IF NOT EXISTS publication_$userId (
+                    id int(11) PRIMARY KEY AUTO_INCREMENT,
+                    titre varchar(200),
+                    nom_prenoms varchar(200),
+                    image varchar(500),
+                    description varchar(500)
+                )"
+            );
+            $requete4->execute();
 
-            // if($requete->rowCount() > 0){
-            //     //DO NOTHING
-            // }else{
-            //     $connect = new PDO('mysql: host=localhost; dbname=bovin_solution','root','');
-            //     $requete2 = $connect->prepare("
-            //         CREATE TABLE panier_? (
-            //             id int(11) PRIMARY KEY AUTO_INCREMENT,
-            //             titre varchar(200), 
-            //             nom_doc varchar(200), 
-            //             prix int(11)
-            //         );"
-            //     );
-            //     $requete2->execute(array($userId));
-            // }
         }else{
             $mailError = "Votre mail n'est pas valide !";
         }
