@@ -1,3 +1,34 @@
+<?php
+    session_start();
+    $nomPrenoms = null;
+    $email = null;
+    $message = null;
+    $successError = null;
+    if(!empty($_POST) && isset($_POST)){
+        if(filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)){
+            $nomPrenoms = check($_POST['nom_prenoms']);
+            $email = check($_POST['email']);
+            $message = check($_POST['message']);
+
+            $connect = new PDO('mysql: host=localhost; dbname=bovin_solution', 'root',"");
+            $requete = $connect->prepare("
+                INSERT INTO signalement(nom_prenoms, mail, message)
+                VALUES(?, ?, ?);
+            ");
+            $requete->execute(array($nomPrenoms, $email, $message));                
+            $successError = "Signalement enregistré !";
+        }else{
+            $successError = "Votre mail n'est pas valide !";
+        }
+        
+    }
+    function check($donnee){
+        $donnee = trim($donnee);
+        $donnee = stripslashes($donnee);
+        $donnee = htmlspecialchars($donnee);
+        return $donnee;
+    }
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -38,12 +69,17 @@
                 <form action="#" method="post">
                     <legend><h3 class="text-success text-center"><strong>Contactez-nous</strong></h3></legend>
                     <div class="m-4">
+                        <?php if($successError): ?>
+                            <p class="alert alert-success">
+                                <?= $successError ?>
+                            </p>
+                        <?php endif ?>
                         <label for="nom_prenoms" class="form-label mx-4"><strong>Votre Nom et Prénoms</strong></label>
                         <input type="text" class="form-control input_edit text-dark" name="nom_prenoms" id="nom_prenoms" value="Ex : Ange TOGNON" required>
                     </div>
                     <div class="m-4">
                         <label for="email" class="form-label mx-4"><strong>Email</strong></label>
-                        <input type="email" class="form-control input_edit text-dark" name="email" id="email" value="angetognon@gmail.com" required>
+                        <input type="text" class="form-control input_edit text-dark" name="email" id="email" value="angetognon@gmail.com" required>
                     </div>
                     <div class="m-4">
                         <label for="message" class="form-label"><strong>Message</strong></label>

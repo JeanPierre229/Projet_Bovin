@@ -1,3 +1,28 @@
+<?php
+    session_start();
+    $titre = null;
+    $prix = null;
+    $success = null;
+    if(!empty($_POST) && isset($_POST)){
+        $titre = check($_POST['titre']);
+        $prix = check($_POST['prix']);
+
+        $connect = new PDO('mysql: host=localhost; dbname=bovin_solution', 'root',"");
+        $requete = $connect->prepare("
+            INSERT INTO ajout_investissement(titre_achat, prix)
+            VALUES('$titre', '$prix');
+        ");
+        $requete->execute();
+        $success = "Investissement ajouté !";
+        //header("Location: statistique.php");
+    }
+    function check($donnee){
+        $donnee = trim($donnee);
+        $donnee = stripslashes($donnee);
+        $donnee = htmlspecialchars($donnee);
+        return $donnee;
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -84,8 +109,13 @@
                                 <p class="text-warning">7800 FCFA</p>
                             </div>
                             <div class="div-form my-3 px-3 py-2">
-                                <form action="#" method="post">
+                                <form action="statistique.php" method="post">
                                     <legend class="text-center">Formulaire d'ajout d'un nouveau investissement</legend>
+                                    <?php if($success): ?>
+                                        <p class="alert alert-success">
+                                            <?= $success ?>
+                                        </p>
+                                    <?php endif ?>
                                     <div class="mt-2">
                                         <label for="titre" class="form-label text-success">Titre de l'achat</label>
                                         <input type="text" class="form-control input-form" name="titre" id="titre" required>
