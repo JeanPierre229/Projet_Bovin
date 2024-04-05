@@ -1,3 +1,45 @@
+<?php 
+    session_start();
+    $nom_prenoms = null;
+    $mail = null;
+    $tel = null;
+    $profession = null;
+    $id = $_SESSION['id'];
+    $errorUpdate = null;
+    if(!empty($_POST) && isset($_POST)){
+        if(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
+            $nom_prenoms = check($_POST['nom_prenoms']);
+            $mail = check($_POST['email']);
+            $tel = check($_POST['telephone']);
+            $profession = check($_POST['profession']);
+
+            $connect = new PDO('mysql: host=localhost; dbname=bovin_solution', 'root', '');
+            $requete = $connect->prepare("
+                                        UPDATE users
+                                        SET nom_prenoms = ?,
+                                            mail = ?,
+                                            tel = ?,
+                                            profession = ?
+                                        WHERE id = ?;
+            ");
+            $requete->execute(
+                array(
+                    $nom_prenoms, $mail, $tel, $profession, $id
+                )
+            );
+            header('Location: accueil.php');
+        }else{
+            $errorUpdate = "Votre mail n'est pas valide !";
+        }
+    }
+
+    function check($donnee){
+        $donnee = trim($donnee);
+        $donnee = stripslashes($donnee);
+        $donnee = htmlspecialchars($donnee);
+        return $donnee;
+    }
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -37,7 +79,7 @@
 <body>
     <section>
         <div class="container b">
-            <form action="submit_inscription.php" method="post">
+            <form action="completer_profil.php" method="post">
                 <div class="row">
                     <div class="col-8 my-5">
                         <h1 class="text-center text-success my-5">Complétez votre profil</h1>
@@ -55,6 +97,11 @@
                                 </label>
                                 <input class="form-control row-form py-3 mx-3" type="email" placeholder="Ex : johndoe@gmail.com" name="email" id="email" required>
                             </div>
+                            <?php if($errorUpdate): ?>
+                                <p class="text-danger">
+                                    <?= $errorUpdate ?>
+                                </p>
+                            <?php endif ?>
                             <div class="my-3">
                                 <label class="form-label" for="nom_prenoms">
                                     <i class="fa fa-arrow-right rad bg-success text-light p-1"></i>
@@ -73,17 +120,20 @@
                     <div class="col-3 bg-secondary section mx-5">
                         <div class="text-center">
                             <img src="images/img-profil.png" alt="Image de profil" class="img ctn my-5">
-                            <p>GADO Halila</p>
+                            <p><?= $_SESSION['nom_prenoms'] ?></p>
                         </div>
                         <div class="mx-3">
                             <p>
-                                Parakou, Bénin
+                                <?= $_SESSION['ville'] ?>
                             </p>
                             <p>
-                                example@gmail.com
+                                <?= $_SESSION['mail'] ?>
                             </p>
                             <p>
-                                +229 55 55 00 00
+                                <?= $_SESSION['tel'] ?>
+                            </p>
+                            <p>
+                                <?= $_SESSION['profession'] ?>
                             </p>
                         </div>
                         <div class="text-center">

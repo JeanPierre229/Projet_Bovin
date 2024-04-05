@@ -1,32 +1,62 @@
 <?php
     session_start();
-    $id_error = null;
-    $mailError = null;
-    $mail = null;
-    $mp = null;
-    $connect = new PDO('mysql: host=localhost; dbname=handball', 'root', '');
-    $requete = $connect->prepare("SELECT * FROM users");
-    $requete->execute();
-    $users = $requete->fetchAll();
+    $userId = null;
+    $errorConnect = null;
 
     if(!empty($_POST) && isset($_POST)){ 
-        if(filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)){
+        if(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
+            $connect = new PDO('mysql: host=localhost; dbname=bovin_solution', 'root', '');
+            $requete = $connect->prepare("SELECT * FROM users");
+            $requete->execute();
+            $users = $requete->fetchAll();
+
             foreach ($users as $user) {
                 if (
-                    $user['mail'] === $_POST['mail']
-                    && $user['motDePasse'] === sha1($_POST['motDePasse'])
+                    $user['mail'] === $_POST['email']
+                    && $user['mot_passe'] === sha1($_POST['motDePasse'])
                 ) {
-                    $_SESSION['nom_prenoms'] = $user['noms_prenoms'];
+                    $_SESSION['nom_prenoms'] = $user['nom_prenoms'];
                     $_SESSION['mail'] = $user['mail'];
                     $_SESSION['ville'] = $user['ville'];
+                    $_SESSION['tel'] = $user['tel'];
+                    $_SESSION['id'] = $user['id'];
+                    $_SESSION['profession'] = $user['profession'];
                     header("Location: accueil.php");
                 }else{
-                    $id_error = "Identifiants incorrects !";
+                    $errorConnect = "Identifiants incorrects !";
                 }
             }
         }else{
-            $mailError = "Votre mail n'est pas valide !";
-        }  
+            $errorConnect = "Votre mail n'est pas valide !";
+        }
+        //Création de la table panier pour chaque utilisateur de notre plateforme
+        $userId = $_SESSION['id'];
+        
+        $connect = new PDO('mysql: host=localhost; dbname=bovin_solution','root','');
+        $requete2 = $connect->prepare("
+            CREATE TABLE IF NOT EXISTS panier_$userId (
+                id int(11) PRIMARY KEY AUTO_INCREMENT,
+                first_name varchar(200),
+                last_name varchar(200),
+                mail varchar(500),
+                tel varchar(200),  
+                addresse varchar(200),
+                post_code varchar(200),
+                country varchar(200),
+                type varchar(50),
+                quantite int(11), 
+                prix int(11)
+            )"
+        );
+        $requete2->execute();
+
+    }
+
+    function check($donnee){
+        $donnee = trim($donnee);
+        $donnee = stripslashes($donnee);
+        $donnee = htmlspecialchars($donnee);
+        return $donnee;
     }
 ?>
 <!DOCTYPE html>
@@ -55,16 +85,21 @@
     <section class="my-5">
         <div class="container my-5">
             <h1 class="text-center">Connexion à <span class="text-success">BovinSolution</span></h1>
-            <form action="submit_inscription.php" method="post">
+            <form action="connexion.php" method="post">
                 <div class="row">
                     <div class="col-lg-6 col-md-12 col-12">
+                            <?php if($errorConnect){ ?>
+                                <p class="alert alert-danger">
+                                    <?= $errorConnect ?>
+                                </p>
+                            <?php } ?>
                             <div class="mt-5 mb-4">
                                 <label class="form-label" for="email"><strong>Email</strong></label>
-                                <input class="form-control row-form py-3" type="email" placeholder="Ex : johndoe@gmail.com" name="email" id="email" required>
+                                <input class="form-control row-form py-3" type="text" placeholder="Ex : johndoe@gmail.com" name="email" id="email" required>
                             </div>
                             <div class="mt-2 mb-4">
                                 <label class="form-label" for="mot_de_passe"><strong>Mot de passe</strong></label>
-                                <input class="form-control row-form py-3" type="password" placeholder="Ex : ******" name="mot_de_passe" id="mot_de_passe" required>
+                                <input class="form-control row-form py-3" type="password" placeholder="Ex : ******" name="motDePasse" id="mot_de_passe" required>
                             </div>
                             <div class="my-2">
                                 <input type="checkbox" name="connect" id="connect">

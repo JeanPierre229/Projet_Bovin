@@ -38,6 +38,25 @@
             }else{
                 $mpError = "Mots de passe non identiques, Rééssayez...";
             }
+
+            // $connect = new PDO('mysql: host=localhost; dbname=bovin_solution', 'root',"");
+            // $requete = $connect->prepare("SHOW TABLES LIKE 'panier_?';");
+            // $requete->execute();
+
+            // if($requete->rowCount() > 0){
+            //     //DO NOTHING
+            // }else{
+            //     $connect = new PDO('mysql: host=localhost; dbname=bovin_solution','root','');
+            //     $requete2 = $connect->prepare("
+            //         CREATE TABLE panier_? (
+            //             id int(11) PRIMARY KEY AUTO_INCREMENT,
+            //             titre varchar(200), 
+            //             nom_doc varchar(200), 
+            //             prix int(11)
+            //         );"
+            //     );
+            //     $requete2->execute(array($userId));
+            // }
         }else{
             $mailError = "Votre mail n'est pas valide !";
         }

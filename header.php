@@ -7,6 +7,10 @@
     .bd{
         border-radius: 10px;
     }
+    #bell{
+        text-decoration: none;
+        color: black;
+    }
 </style>
 <header class="mt-5 mx-auto">
     <div class="row justify-content-between">
@@ -15,10 +19,10 @@
         </div>
         <div class="mx-3 my-3">
             <span class="mx-2">
-                <a href="#" id="ac">Accueil</a>
+                <a href="accueil.php" id="ac">Accueil</a>
             </span>
             <span class="mx-2">
-                <a href="#" id="ac">Achat et livraison</a>
+                <a href="completer_profil.php" id="ac">Achat et livraison</a>
             </span>
             <span class="mx-2">
                 <a href="#" id="ac">Notre annuaire</a>
@@ -29,10 +33,12 @@
                 <i class="fa fa-map-marker bg-success p-2 bd"><span class="px-2">Géolocation</span></i>
             </span>
             <span class="mx-2">
-                <i class="fa fa-bullhorn bg-success p-2 bd"><span class="px-2">Plublier une annonce</span></i>
+                <a href="publier_annonce.php" id="ac">
+                    <i class="fa fa-bullhorn bg-success p-2 bd"><span class="px-2">Plublier une annonce</span></i>
+                </a>
             </span>
             <span class="mx-2">
-                <i class="fa fa-bell"></i>
+                <a href="deconnexion.php" id="bell"><i class="fa fa-bell"></i></a>
             </span>
         </div>
     </div>
