@@ -35,7 +35,7 @@
 </head>
 <style>
     .bg{
-        height: 101vh;
+        height: 75%vh;
     }
     .input-form{
         border: 0;
@@ -57,34 +57,34 @@
     <section>
         <div class="container">
             <div class="row">
-                <div class="col-2 bg-success bg">
+                <div class="col-lg-2 col-md-4 col-4 bg-success bg">
                     <strong><h1 class="text-center text-light mt-3">Bovin Solution</h1></strong>
                 </div>
-                <div class="col-10">
+                <div class="col-lg-10 col-md-8 col-8">
                     <div class="row">
                         <div class="col-lg-7 col-md-12 col-12 mx-4">
                             <div class="row mt-3">
-                                <div class="mx-2">
+                                <div class="col-lg-4 col-md-4 col-10 my-2">
                                     <h3>Suivie</h3>
                                 </div>
-                                <div class="mx-4">
+                                <div class="col-lg-4 col-md-4 col-10 my-2">
                                     <button class="btn btn-light border border-dark bg-light">Voir l'historique</button>
                                 </div>
-                                <div class="mx-4">
+                                <div class="col-lg-4 col-md-4 col-10 my-2">
                                     <button class="btn btn-success text-light">Nouvelle entrée</button>
                                 </div>
                             </div>
                             <div class="row my-3 div-form p-3 justify-content-between">
-                                <div class="bg-light border border-dark p-3 mx-2 rad">
+                                <div class="bg-light border border-dark p-3 mx-2 rad col-lg-3 col-md-3 col-12 my-2">
                                     <p class="text-center">Dépenses Annuelles</p>
                                     <h5 class="text-center text-success"><strong>300.750 FCFA</strong></h5>
                                 </div>
-                                <div class="bg-light border border-dark p-3 mx-2 rad">
+                                <div class="bg-light border border-dark p-3 mx-2 rad col-lg-3 col-md-3 col-12 my-2">
                                     <p class="text-center">Nombre total de troupeau</p>
                                     <h5 class="text-center"><strong>10</strong></h5>
                                 </div>
-                                <div class="bg-light border border-dark p-3 mx-2 rad">
-                                    <p class="text-center">Nombre total</p>
+                                <div class="bg-light border border-dark p-3 mx-2 rad col-lg-3 col-md-3 col-12 my-2">
+                                    <p class="text-center mb-lg-5 mb-5">Nombre total</p>
                                     <h5 class="text-center"><strong>27</strong></h5>
                                 </div>
                             </div>
@@ -96,7 +96,7 @@
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-12 col-12">
-                            <div>
+                            <div class="text-center">
                                 <img src="images/oeuf-statistique.png" alt="L'oeuf de la statistique" class="img">
                             </div>
                             <div>

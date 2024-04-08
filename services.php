@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,37 +56,37 @@
         <div class="mx-auto">
         <div class="row my-3 mx-5">
             <div>
-                <i class="fa fa-arrow-left" style="font-size: 35px;"></i>
+                <a href="accueil.php"><i class="fa fa-arrow-left" style="font-size: 35px;"></i></a>
             </div>
             <div class="mx-auto">
                 <p class="h4">Search results for "Grazing Services"</p>
             </div>
         </div>
         <div class="row">
-            <div class="col-5">
+            <div class="col-lg-5 col-md-6 col-12">
                 <?php require "aside1.php"; ?>
             </div>
-            <div class="col-7">
+            <div class="col-lg-7 col-md-6 col-12">
                 <div class="row">
                     <div class="col-5 row-form mr-4">
                         <p class="container">
                             <img src="images/boeuf.png" alt="" class="img img-service">
                             <h6 class="text-success px-3">Service rating</h6>
                         </p>
-                        <p class="px-3">
-                            <span>4.5 stars</span>
-                            <span class="container text-right text-success">Available now</span>
-                        </p>
+                        <div class="row justify-content-between px-4">
+                            <div class="">4.5 stars</div>
+                            <div class="text-success">Available now</div>
+                        </div>
                     </div>
                     <div class="col-5 row-form">
                         <p class="container-fluid">
                             <img src="images/ferme.png" alt="" class="img img-service">
                             <h6 class="text-success px-3">Service rating</h6>
                         </p>
-                        <p>
-                            <span class="px-3">4.5 stars</span>
-                            <span class="container text-right text-success">20.000 F</span>
-                        </p>
+                        <div class="row justify-content-between px-4 pb-2">
+                            <div class="">4.5 stars</div>
+                            <div class="text-success">20.000 FCFA</div>
+                        </div>
                     </div>
                 </div>
                 <div class="row my-3">
@@ -94,20 +95,20 @@
                             <img src="images/cheval.png" alt="" class="img img-service">
                             <h6 class="text-success px-3">Service rating</h6>
                         </p>
-                        <p>
-                            <span class="px-3">4.5 stars</span>
-                            <span class="container text-right text-success">Available now</span>
-                        </p>
+                        <div class="row justify-content-between px-4 pb-2">
+                            <div class="">4.5 stars</div>
+                            <div class="text-success">Available now</div>
+                        </div>
                     </div>
                     <div class="col-5 row-form">
                         <p class="container-fluid">
                             <img src="images/ferme.png" alt="" class="img img-service">
                             <h6 class="text-success px-3">Service rating</h6>
                         </p>
-                        <p>
-                            <span class="px-3">4.5 stars</span>
-                            <span class="container text-right text-success">20.000 F</span>
-                        </p>
+                        <div class="row justify-content-between px-4 pb-2">
+                            <div class="">4.5 stars</div>
+                            <div class="text-success">20.000 FCFA</div>
+                        </div>
                     </div>
                 </div>
                 <div class="row my-3">
@@ -116,20 +117,20 @@
                             <img src="images/plantes.png" alt="" class="img img-service">
                             <h6 class="text-success px-3">Service rating</h6>
                         </p>
-                        <p>
-                            <span class="px-3">4.5 stars</span>
-                            <span class="container text-right text-success">Available now</span>
-                        </p>
+                        <div class="row justify-content-between px-4 pb-2">
+                            <div class="">4.5 stars</div>
+                            <div class="text-success">Available now</div>
+                        </div>
                     </div>
                     <div class="col-5 row-form">
                         <p class="container-fluid">
                             <img src="images/accessoire.png" alt="" class="img img-service">
                             <h6 class="text-success px-3">Service rating</h6>
                         </p>
-                        <p>
-                            <span class="px-3">4.5 stars</span>
-                            <span class="container text-right text-success">Available now</span>
-                        </p>
+                        <div class="row justify-content-between px-4 pb-2">
+                            <div class="">4.5 stars</div>
+                            <div class="text-success">Available now</div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -21,6 +21,7 @@
                     $_SESSION['tel'] = $user['tel'];
                     $_SESSION['id'] = $user['id'];
                     $_SESSION['profession'] = $user['profession'];
+                    $_SESSION['profil'] = $user['profil'];
                     header("Location: accueil.php");
                 }else{
                     $errorConnect = "Identifiants incorrects !";

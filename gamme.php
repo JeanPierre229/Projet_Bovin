@@ -1,4 +1,5 @@
 <?php
+    session_start();
     function case_alimaux($title_image, $alt, $description){
         echo '<div class="col-3 case_border m-4 py-3 text-center">
                 <img src="'.$title_image.'" alt="'.$alt.'" class="img w-100">
@@ -80,7 +81,7 @@
             </div>
         </section>
 
-        <section class=" decouvrir_gamme my-3">
+        <section class=" decouvrir_gamme my-3 rounded-5">
             <div class="row">
                 <div class="col-6 p-5">
                     <h1 class="text-success">Découvrez notre gamme</h1>
@@ -119,3 +120,4 @@
         }
     });
 </script>
+<script src="js/bootstrap.min.js"></script>

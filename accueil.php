@@ -1,4 +1,11 @@
-<?php session_start(); ?>
+<?php 
+    session_start(); 
+    if(!empty($_POST) && isset($_POST)){
+        if($_POST['search'] == "Grazing Services"){
+            header('Location: services.php');
+        }
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,6 +23,7 @@
     .bg{
         background-image: url("images/after-header.png");
         background-size: 100%;
+        background-repeat: no-repeat;
     }
     .sh{
         background-color: rgb(238, 238, 238);
@@ -24,17 +32,14 @@
     }
     #search1{
         border: 0;
-        margin-top: -20px;
+        margin-top: -40px;
         padding: 20px;
         background-color: rgb(238, 238, 238);
+        border-radius: 100px;
     }
     #search{
         border: 0;
-        background-color: rgb(238, 238, 238);
-    }
-    #img-ac{
-        width: 180px;
-        height: 120px;
+        background-color: transparent;
     }
     #img-footer{
         border-radius: 10px;
@@ -46,59 +51,61 @@
     </header>
     <main>
         <div class="row bg mt-3">
-            <div class="p-5 m-5 col-4">
-                <h3 class="text-success"><strong>BovinSolution</strong></h3>
-                <p class="text-light mb-5">
+            <div class="col-lg-4 col-8 col-md-4 p-lg-5 p-md-5 p-5 mb-5 mb-lg-5 mb-md-5">
+                <h3 class="text-success mb-lg-2 mb-md-2"><strong>BovinSolution</strong></h3>
+                <p class="text-light mb-lg-5 mb-0 mb-md-5">
                     Nous vous facilitons l'accès aux ressources et
                     informations concernant l'élevage au Bénin
                 </p>
             </div>
         </div>
-        <div class="col">
-            <div class="row justify-content-center">
-                <form action="#">
-                    <p class="sh px-5" id="search1">
-                        <input size="100%" type="text" name="search" id="search" placeholder="Rechercher Des Animaliers Peulhs Disponibles">
+        <div class="col-12 col-md-12 col-lg-12 justify-content-center mb-5">
+            <form action="accueil.php" method="post">
+                <div class="row justify-content-between" id="search1">
+                    <div class="col-10 col-lg-8 col-md-6">
+                        <input class="form-control" size="" type="text" name="search" id="search" placeholder="Rechercher Des Animaliers Peulhs Disponibles">
+                    </div>
+                    <div>
                         <i class="fa fa-search text-success" style="font-size: 30px;"></i>
-                    </p>
-                </form>
-            </div>
+                    </div>
+                </div>
+            </form>
         </div>
         <div class="row justify-content-between text-success">
             <h6>Catégories-Achat</h6>
             <h6>Voir tout</h6>
         </div>
         <div class="row">
-            <div class="mx-5 p-0" style="border: 1px solid gray; border-radius: 15px;">
+            <div class="mx-5 p-0 col-lg-2 col-md-4 col-12 my-2" style="border: 1px solid gray; border-radius: 15px;">
                 <p class='text-center'>
-                    <img src="images/lait-vache.png" alt="Une image de lait de vache" id="img-ac" class="img">
+                    <img src="images/lait-vache.png" alt="Une image de lait de vache" id="img-ac" class="img w-100 mb-lg-5">
                 </p>
                 <h4 class="text-center">Lait de vache</h4>
                 <p class="text-center">
                     <button class="btn btn-success px-3 py-0">Ajouter au panier</button>
                 </p>
             </div>
-            <div class="mx-5 p-0" style="border: 1px solid gray; border-radius: 15px;">
+            <div class="mx-5 p-0 col-lg-2 col-md-4 col-12 my-2" style="border: 1px solid gray; border-radius: 15px;">
                 <p class='text-center'>
-                    <img src="images/fromage.png" alt="Une image de fromage" id="img-ac" class="img">
+                    <img src="images/fromage.png" alt="Une image de fromage" id="img-ac" class="img w-100 mb-lg-5">
                 </p>
                 <h4 class="text-center">Fromage</h4>
                 <p class="text-center">
                     <button class="btn btn-success px-3 py-0">Ajouter au panier</button>
                 </p>
             </div>
-            <div class="mx-5 p-2" style="border: 1px solid gray; border-radius: 15px;">
+            <div class="mx-5 p-2 col-lg-2 col-md-4 col-12 my-2" style="border: 1px solid gray; border-radius: 15px;">
                 <p class='text-center'>
-                    <img src="images/oeuf.png" alt="Une image d'oeuf" id="img-ac" class="img">
+                    <img src="images/oeuf.png" alt="Une image d'oeuf" id="img-ac" class="img w-100">
                 </p>
                 <h4 class="text-center">Oeuf</h4>
                 <p class="text-center">
                     <button class="btn btn-success px-3 py-0">Ajouter au panier</button>
                 </p>
             </div>
-            <div class="mx-5 p-2" style="border: 1px solid gray; border-radius: 15px;">
-                <p class='text-center'>
-                    <img src="images/poisson.png" alt="Une image d'oeuf" id="img-ac" class="img">
+            <div class="mx-5 p-2 col-lg-2 col-md-4 col-12 my-2" style="border: 1px solid gray; border-radius: 15px;">
+                <p class='text-center mb-lg-5 mb-md-5'>
+                    <img src="images/poisson.png" alt="Une image d'oeuf" id="img-ac" class="img w-100 mb-lg-5 mb-md-5">
                 </p>
                 <h4 class="text-center">Poisson</h4>
                 <p class="text-center">
@@ -107,10 +114,10 @@
             </div>
         </div>
         <div class="row bg-secondary m-2 justify-content-center">
-            <h4 class="text-light p-2">Annuaire géolocalisé des marchés du bétails</h4>
+            <h4 class="text-light p-2" id="location">Annuaire géolocalisé des marchés du bétails</h4>
         </div>
         <div class="row mx-auto">
-            <div class="col-6">
+            <div class="col-lg-6 col-md-12 col-12 text-center">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125977.52701863702!2d2.527193495
                     4203368!3d9.351160549754804!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x10320550a556d695
                     %3A0x706d4b90bc86232d!2sParakou!5e0!3m2!1sfr!2sbj!4v1708417046394!5m2!1sfr!2sbj" width="80%" 
@@ -118,7 +125,7 @@
                     referrerpolicy="no-referrer-when-downgrade">
                 </iframe>
             </div>
-            <div class="col-6 my-3">
+            <div class="col-lg-6 col-md-12 col-12 mx-md-5 mx-lg-0 mx-auto my-3 text-center text-lg-start text-md-start">
                 <div class="mx-5 my-2">
                     <h4><strong>Annotation</strong></h4>
                 </div>
@@ -144,10 +151,10 @@
         </div>
         <div class="row bg-success px-2">
             <div class="mx-auto my-3">
-                <h2><strong class="text-light">Annonce</strong></h2>
+                <strong class="text-light"><h2>Annonce</h2></strong>
             </div>
             <div class="row">
-                <div class="col-4">
+                <div class="col-lg-4 col-md-6 col-12">
                     <div class="container bg-light" id="img-footer">
                         <p>
                             <img src="images/vache.png" alt="L'élevage de boeufs" class="img container">
@@ -159,7 +166,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="col-4">
+                <div class="col-lg-4 col-md-6 col-12">
                     <div class="container bg-light" id="img-footer">
                         <p>
                             <img src="images/p_poisson.png" alt="L'élevage de poisson" class="img container">
@@ -171,7 +178,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="col-4">
+                <div class="col-lg-4 col-md-6 col-12">
                     <div class="container bg-light" id="img-footer">
                         <p>
                             <img src="images/poules.png" alt="L'élevage de poules" class="img container">
@@ -191,3 +198,6 @@
     </footer>
 </body>
 </html>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" 
+  integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" 
+  crossorigin="anonymous"></script>

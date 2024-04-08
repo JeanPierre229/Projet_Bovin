@@ -6,12 +6,18 @@
     $profession = null;
     $id = $_SESSION['id'];
     $errorUpdate = null;
+    $image = null;
+    $imageErreur = null;
     if(!empty($_POST) && isset($_POST)){
         if(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
             $nom_prenoms = check($_POST['nom_prenoms']);
             $mail = check($_POST['email']);
             $tel = check($_POST['telephone']);
             $profession = check($_POST['profession']);
+            $image = check($_FILES["fichier"]["name"]);
+            $image_path = 'images/img-profil/' . basename($image);
+            $image_ext = pathinfo($image_path, PATHINFO_EXTENSION);
+            $upload = false;
 
             $connect = new PDO('mysql: host=localhost; dbname=bovin_solution', 'root', '');
             $requete = $connect->prepare("
@@ -27,7 +33,61 @@
                     $nom_prenoms, $mail, $tel, $profession, $id
                 )
             );
-            header('Location: accueil.php');
+
+            //Gestion de l'image de profil à ajouter par l'utilisateur
+            if($image){
+                $upload = true;
+                $extension = array('jpg', 'png', 'jpeg', 'gif');
+                $image_ext = strtolower(pathinfo($image_path, PATHINFO_EXTENSION));
+        
+                if(!in_array($image_ext, $extension)){
+                    $imageErreur = "Le fichier doit être sous l'un de ces formats: .jpg, .png, .jpeg, et .gif";
+                    $upload = false;
+                }
+        
+                if(file_exists($image_path)){
+                    $imageErreur = "Cette image existe déjà !";
+                    $upload = false;
+                }
+        
+                if($_FILES["fichier"]["size"] > 500000){
+                    $imageErreur = "Le fichier ne doit pas dépasser 500kb";
+                    $upload = false;
+                }
+        
+                $special_char = array("'", "/", "\\", ":", "<", ">");
+                if(preg_match('/[\'\/\\\\:<>\"]/', $image)){
+                    $imageErreur = "Le nom du fichier ne doit pas contenir ces caractères: /, \\, :, < et >";
+                    $upload = false;
+                }
+        
+                if($upload){
+                    if(!move_uploaded_file($_FILES["fichier"]["tmp_name"], $image_path)){
+                        $imageErreur = "Erreur lors du chargement du fichier";
+                        $upload = false;
+                    }
+                }
+        
+                if($upload){
+                    // Insertion dans la base de données seulement si l'upload est réussi
+                    $connect = new PDO("mysql:host=localhost; dbname=bovin_solution", "root", "");
+                    $requete1 = $connect->prepare("
+                            UPDATE users
+                            SET profil = '$image'
+                            WHERE id = '$id';
+                    ");
+                    $requete1->execute();
+                    header("Location: completer_profil.php");
+                }
+            }
+            header('Location: completer_profil.php');
+
+            $connexion = new PDO("mysql: host=localhost; dbname=bovin_solution", "root", "");
+            $requete0 = $connexion->prepare("SELECT * FROM users WHERE id = $id;");
+            $requete0->execute();
+            $row = $requete0->fetch();
+            $_SESSION['profil'] = $row['profil'];
+            $_SESSION['profession'] = $row['profession'];
         }else{
             $errorUpdate = "Votre mail n'est pas valide !";
         }
@@ -52,10 +112,13 @@
 </head>
 <style>
     .section{
-        height: 100vh;
+        height: 100%vh;
         background-color: #3498db;
         color: white;
         border-radius: 20px;
+    }
+    .profil{
+        margin: 12px;
     }
     .ctn{
         width: 200px;
@@ -79,23 +142,31 @@
 <body>
     <section>
         <div class="container b">
-            <form action="completer_profil.php" method="post">
+            <form action="completer_profil.php" method="post" enctype="multipart/form-data">
                 <div class="row">
-                    <div class="col-8 my-5">
-                        <h1 class="text-center text-success my-5">Complétez votre profil</h1>
+                    <div class="col my-5">
+                        <div class="row">
+                            <div class="mx-5 mt-1">
+                                <a href="accueil.php"><i class="fa fa-arrow-left text-dark" style="font-size: 20px;"></i></a>
+                            </div>
+                            <div>
+                                <h1 class="text-center text-success">Complétez votre profil</h1>
+                            </div>
+                        </div>
+                        
                             <div class="my-3">
                                 <label class="form-label" for="nom_prenoms">
                                     <i class="fa fa-arrow-right rad bg-success text-light p-1"></i>
                                     <strong>Modifier votre nom et prénoms</strong>
                                 </label>
-                                <input class="form-control row-form py-3 mx-3" type="text" placeholder="GADO Halila" name="nom_prenoms" id="nom_prenoms" required>
+                                <input class="form-control row-form py-3 mx-3" type="text" value="<?= $_SESSION['nom_prenoms'] ?>" name="nom_prenoms" id="nom_prenoms" required>
                             </div>
                             <div class="my-3">
                                 <label class="form-label" for="nom_prenoms">
                                     <i class="fa fa-arrow-right rad bg-success text-light p-1"></i>
                                     <strong>Modifier votre email</strong>
                                 </label>
-                                <input class="form-control row-form py-3 mx-3" type="email" placeholder="Ex : johndoe@gmail.com" name="email" id="email" required>
+                                <input class="form-control row-form py-3 mx-3" type="email" value="<?= $_SESSION['mail'] ?>" name="email" id="email" required>
                             </div>
                             <?php if($errorUpdate): ?>
                                 <p class="text-danger">
@@ -107,19 +178,39 @@
                                     <i class="fa fa-arrow-right rad bg-success text-light p-1"></i>
                                     <strong>Numéro de Téléphone</strong>
                                 </label>
-                                <input class="form-control row-form py-3 mx-3" type="text" placeholder="57 88 74 11" name="telephone" id="telephone" required>
+                                <input class="form-control row-form py-3 mx-3" type="text" value="<?= $_SESSION['tel'] ?>" name="telephone" id="telephone" required>
                             </div>
                             <div class="my-3">
                                 <label class="form-label" for="nom_prenoms">
                                     <i class="fa fa-arrow-right rad bg-success text-light p-1"></i>
                                     <strong>Quelle est votre profession ?</strong>
                                 </label>
-                                <input class="form-control row-form py-3 mx-3" type="text" placeholder="Élévatrice de boeufs" name="profession" id="profession" required>
+                                <input class="form-control row-form py-3 mx-3" type="text" value="<?php if(empty($_SESSION['profession'])){ ?> Elevatrice des boeufs <?php }else{
+                                    echo $_SESSION['profession']; }?>" name="profession" id="profession" required>
                             </div>
                     </div>
-                    <div class="col-3 bg-secondary section mx-5">
+                    <div class="col-lg-3 col-md-12 col-12 bg-secondary section mx-5">
                         <div class="text-center">
-                            <img src="images/img-profil.png" alt="Image de profil" class="img ctn my-5">
+                            <?php if(!empty($_SESSION['profil']) && isset($_SESSION['profil'])){ ?>
+                                <img src="images/img-profil/<?= $_SESSION['profil'] ?>" alt="" class="img ctn my-5">
+                                <input type="file" name="fichier" id="fichier" style="display: none;">
+                                <span class="m-1" id="add-profile">
+                                    <a href="#"><i class="fa fa-pencil" style="font-size: 20px;"></i></a>
+                                </span>
+                            <?php }else{ ?>
+                                <span class="mx-2">
+                                    <i class="fa fa-user ctn bg-light text-dark my-3 p-3" style="font-size: 150px;"></i>
+                                </span>
+                                <input type="file" name="fichier" id="fichier" style="display: none;">
+                                <span class="" id="add-profile">
+                                    <a href="#"><i class="fa fa-pencil" style="font-size: 20px;"></i></a>
+                                </span>
+                            <?php } ?>
+                            <?php if($imageErreur): ?>
+                                <p class="text-danger">
+                                    <?= $imageErreur ?>
+                                </p>
+                            <?php endif ?>
                             <p><?= $_SESSION['nom_prenoms'] ?></p>
                         </div>
                         <div class="mx-3">
@@ -146,3 +237,8 @@
     </section>
 </body>
 </html>
+<script>
+    document.getElementById('add-profile').addEventListener('click', function() {
+        document.getElementById('fichier').click();
+    });
+</script>
