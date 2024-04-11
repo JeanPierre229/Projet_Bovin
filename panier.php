@@ -1,5 +1,11 @@
 <?php 
-    session_start(); 
+    session_start();  
+
+    if(!empty($_POST) && isset($_POST)){
+        $montant_total = $_POST['quantite1']*10000;
+        $montant_total += $_POST['quantite2']*7000;
+        $montant_total += $_POST['quantite3']*4000;
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,6 +21,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&famil
     y=Reem+Kufi+Fun:wght@400..700&display=swap" 
     rel="stylesheet">
+    <script src="https://cdn.kkiapay.me/k.js"></script>
 </head>
 <style>
     *{
@@ -95,7 +102,7 @@
                             </select>
                         </div>
                         <div class="col-3 my-5 text-center">
-                            <input type="number" min="1" class="px-2 rad col-4 input-form" name="quantite" id="quantite" placeholder="1" required>
+                            <input type="number" min="1" class="px-2 rad col-4 input-form" name="quantite1" id="quantite" placeholder="1" required>
                         </div>
                         <div class="col my-5">
                             <div class="row">
@@ -120,7 +127,7 @@
                             </select>
                         </div>
                         <div class="col-3 my-5 text-center">
-                            <input type="number" min="1" class="px-2 rad col-4 input-form" name="quantite" id="quantite" placeholder="4" required>
+                            <input type="number" min="1" class="px-2 rad col-4 input-form" name="quantite2" id="quantite" placeholder="4" required>
                         </div>
                         <div class="col my-5">
                             <div class="row">
@@ -145,7 +152,7 @@
                             </select>
                         </div>
                         <div class="col-3 my-5 text-center">
-                            <input type="number" min="1" class="px-2 rad col-4 input-form" name="quantite" id="quantite" placeholder="1" required>
+                            <input type="number" min="1" class="px-2 rad col-4 input-form" name="quantite3" id="quantite" placeholder="1" required>
                         </div>
                         <div class="col my-5">
                             <div class="row">
@@ -189,7 +196,7 @@
                         </div>
                         <div class="mt-2">
                             <label class="form-label" for="mail">Email</label>
-                            <input class="form-control bd-input bg-success text-light" type="text" name="mail" id="mail" value="jane.doe@gmail.com" required>
+                            <input class="form-control bd-input bg-success text-light" type="email" name="mail" id="mail" value="jane.doe@gmail.com" required>
                         </div>
                         <div class="mt-2">
                             <label class="form-label" for="phone">Phone</label>
@@ -220,6 +227,7 @@
                             </p>
                         </div>
                         <div>
+                            <!-- <button class="btn btn-light form-control rad">Proceed to Payment ></button> -->
                             <input value="Proceed to Payment >" type="submit" class="btn btn-light form-control rad">
                         </div>
                     </div>
@@ -232,3 +240,16 @@
     </footer>
 </body>
 </html>
+<script>
+    var formulaire = document.querySelector(".formulaire");
+
+    formulaire.onsubmit=(e)=>{
+        e.preventDefault();
+        openKkiapayWidget({amount:<?=$montant_total ?>, position: "right", callback: "/success", 
+        data: "Test de paiement",
+        theme: "#092374",
+        sandbox: "true",
+        key: "ea194080f5a011ee9f805f907fefa779"
+        })
+    }
+</script>
