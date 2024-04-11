@@ -17,53 +17,57 @@
         text-decoration: none;
         color: black;
     }
+    .h-line{
+        display: flex;
+        justify-content: space-around;
+    }
 </style>
-<header class="mt-5 mx-auto">
-    <div class="row justify-content-between">
-        <div class="row-1 mx-5 my-2 text-center">
-            <a href="accueil.php" id="ac">
-                <img src="images/logo.png" alt="Logo de BovinSolution" class="img w-50">
+<!-- <header class="mt-5 ms-2"> -->
+    <div class="row h-line d-flex justify-content-between">
+        <div class="col-1">
+            <a href="accueil.php">
+                <img src="images/logo.png" alt="Logo de BovinSolution" class="img">
             </a>
         </div>
-        <div class="mx-3 my-3">
-            <span class="mx-2">
-                <a href="accueil.php" id="ac">Accueil</a>
-            </span>
-            <span class="mx-2">
-                <a href="panier.php" id="ac">Achat et livraison</a>
-            </span>
-            <span class="mx-2">
-                <a href="gamme.php" id="ac">Notre annuaire</a>
-            </span>
+        <div class="col-5 my-3 text-end">
+            <ul class="list-unstyled">
+                <li class="list-inline-item">
+                    <a href="accueil.php" id="ac">Accueil</a>
+                </li>
+                <li class="list-inline-item">
+                    <a href="panier.php" id="ac">Achat et livraison</a>
+                </li>
+                <li class="list-inline-item">
+                    <a href="gamme.php" id="ac">Notre annuaire</a>
+                </li>
+            </ul>
         </div>
-        <div class="my-3">
-            <span class="mx-2">
-                <a href="accueil.php#location" id="ac">
-                    <i class="fa fa-map-marker bg-success p-2 bd"><span class="px-2">Géolocation</span></i>
-                </a>
-            </span>
-            <span class="mx-2">
-                <a href="publier_annonce.php" id="ac">
-                    <i class="fa fa-bullhorn bg-success p-2 bd"><span class="px-2">Plublier une annonce</span></i>
-                </a>
-            </span>
-            <span class="mx-2">
-                <a href="statistique.php" id="bell"><i class="fa fa-bell"></i></a>
-            </span>
-            <?php if(!empty($_SESSION['profil']) && isset($_SESSION['profil'])){ ?>
-                <span class="mx-2">
-                    <a href="completer_profil.php" id="bell">
-                        <img src="images/img-profil/<?= $_SESSION['profil'] ?>" alt="" class="img" id="profil">
+        <div class="col-6 my-3">
+            <div class="row">
+                <div class="col">
+                    <a href="accueil.php#location" id="ac">
+                        <i class="fa fa-map-marker bg-success p-2 bd"><span class="px-2">Géolocation</span></i>
                     </a>
-                </span>
-            <?php }else{ ?>
-                <span class="mx-2">
-                    <a href="completer_profil.php" id="bell"><i class="fa fa-user" style="font-size: 20px;"></i></a>
-                </span>
-            <?php } ?>
-            <span class="mx-2">
-                <a href="deconnexion.php" id="bell"><i class="fa fa-sign-out" style="font-size: 20px;" title="Deconnecter"></i></a>
-            </span>
+                </div>
+                <div class="col-5">
+                    <a href="publier_annonce.php" id="ac">
+                        <i class="fa fa-bullhorn bg-success p-2 bd"><span class="px-2">Plublier une annonce</span></i>
+                    </a>
+                </div>
+                <div class="col text-end">
+                    <a href="statistique.php" id="bell"><i class="fa fa-bell"></i></a>
+                    <?php if(!empty($_SESSION['profil']) && isset($_SESSION['profil'])){ ?>
+                        <span class="mx-2">
+                            <a href="completer_profil.php" id="bell">
+                                <img src="images/img-profil/<?= $_SESSION['profil'] ?>" alt="" class="img" id="profil">
+                            </a>
+                        </span>
+                    <?php } ?>
+                    <span class="mx-2">
+                        <a href="deconnexion.php" id="bell"><i class="fa fa-sign-out" style="font-size: 20px;" title="Deconnecter"></i></a>
+                    </span>
+                </div>
+            </div>
         </div>
     </div>
-</header>
+<!-- </header> -->

@@ -1,6 +1,5 @@
 <?php
     session_start();
-    $userId = $_SESSION['id'];
     function check( $donnee ){
         $donnee = trim($donnee);
         $donnee = stripslashes($donnee);
@@ -13,6 +12,7 @@
     $description = null;
     $image = null;
     $imageErreur = null;
+    $userId = null;
 
     if(!empty($_POST) && isset($_POST)){
         $titre = check($_POST["titre"]);
@@ -55,6 +55,7 @@
                     $upload = false;
                 }
             }
+            $userId = $_SESSION['id'];
     
             if($upload){
                 // Insertion dans la base de données seulement si l'upload est réussi
@@ -77,9 +78,21 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&famil
+    y=Reem+Kufi+Fun:wght@400..700&display=swap" 
+    rel="stylesheet">
     <title>Publier_annonce - WaxangariLabs"</title>
 </head>
 <style>
+    *{
+    font-size: 15px;
+    font-family: "Outfit", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    }
     textarea{
         border: none;
         border-radius: 20px;

@@ -5,6 +5,8 @@
             header('Location: services.php');
         }
     }
+    
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,10 +15,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accueil - WaxangariLabs</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&famil
+    y=Reem+Kufi+Fun:wght@400..700&display=swap" 
+    rel="stylesheet">
 </head>
 <style>
+    *{
+    font-size: 15px;
+    font-family: "Outfit", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    }
     body{
         font-size: 18px;
     }
@@ -44,6 +59,10 @@
     #img-footer{
         border-radius: 10px;
     }
+    .h-line{
+        display: flex;
+        justify-content: space-around;
+    }
 </style>
 <body class="container">
     <header>
@@ -59,21 +78,21 @@
                 </p>
             </div>
         </div>
-        <div class="col-12 col-md-12 col-lg-12 justify-content-center mb-5">
+        <div class="col-12 col-md-12 col-lg-10 mx-auto text-center mb-5">
             <form action="accueil.php" method="post">
-                <div class="row justify-content-between" id="search1">
-                    <div class="col-10 col-lg-8 col-md-6">
-                        <input class="form-control" size="" type="text" name="search" id="search" placeholder="Rechercher Des Animaliers Peulhs Disponibles">
+                <div class="row justify-content-between space-search" id="search1">
+                    <div class="col-10 col-lg-8 col-md-6 text-center">
+                        <input class="form-control mx-5" size="" type="text" name="search" id="search" placeholder="Rechercher Des Animaliers Peulhs Disponibles">
                     </div>
-                    <div>
+                    <div class="col-2">
                         <i class="fa fa-search text-success" style="font-size: 30px;"></i>
                     </div>
                 </div>
             </form>
         </div>
-        <div class="row justify-content-between text-success">
-            <h6>Catégories-Achat</h6>
-            <h6>Voir tout</h6>
+        <div class="row text-success h-line">
+            <h6 class="col-10">Catégories-Achat</h6>
+            <h6 class="col-2 text-end">Voir tout</h6>
         </div>
         <div class="row">
             <div class="mx-5 p-0 col-lg-2 col-md-4 col-12 my-2" style="border: 1px solid gray; border-radius: 15px;">
@@ -113,7 +132,7 @@
                 </p>
             </div>
         </div>
-        <div class="row bg-secondary m-2 justify-content-center">
+        <div class="row bg-secondary m-2 text-center">
             <h4 class="text-light p-2" id="location">Annuaire géolocalisé des marchés du bétails</h4>
         </div>
         <div class="row mx-auto">
@@ -198,6 +217,6 @@
     </footer>
 </body>
 </html>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" 
-  integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" 
-  crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
+integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+</script>

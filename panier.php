@@ -1,4 +1,6 @@
-<?php session_start(); ?>
+<?php 
+    session_start(); 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,8 +10,20 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&famil
+    y=Reem+Kufi+Fun:wght@400..700&display=swap" 
+    rel="stylesheet">
 </head>
 <style>
+    *{
+    font-size: 15px;
+    font-family: "Outfit", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    }
     .form-toggle{
         border: 1px solid black;
     }
@@ -45,106 +59,116 @@
         <?php require "header.php"; ?>
     </header>
     <main>
-        <form action="#" method="post">
+        <form action="panier.php" method="post" class="formulaire">
             <div class="row my-3 p-2 justify-content-between">
                 <div class="col-lg-8 col-md-12 col-12 row-form px-5 py-4">
                     <div>
                         <h2 class="text-success"><strong>Mon panier</strong></h2>
                     </div>
                     <div class="row justify-content-between p-2">
-                        <div class="">
+                        <div class="col">
                             <p>Détails du produits</p>
                         </div>
-                        <div class="">
+                        <div class="col text-end">
                             <p>Type</p>
                         </div>
-                        <div class="">
+                        <div class="col text-end">
                             <p>Quantity</p>
                         </div>
-                        <div class="">
+                        <div class="col text-center">
                             <p>Price Total</p>
                         </div>
                     </div>
                     <div class="row justify-content-between">
                         <hr width="100%" size="10px">
-                        <div class="">
-                            <img src="images/panier-01.png" alt="Grazing Services Package" class="img w-100">
+                        <div class="col">
+                            <img src="images/panier-01.png" alt="Grazing Services Package" class="img">
                         </div>
                         <div class="col-2 my-3">
                             <h6><strong>Grazing Services Package</strong></h6>
                             <h6 class="">Beige</h6>
                         </div>
-                        <div class="col-3 my-5">
+                        <div class="col-2 my-5">
                             <select name="#" id="#" class="px-3 rad">
                                 <option value="#">M</option>
                                 <option value="#">F</option>
                             </select>
                         </div>
-                        <div class="col-3 my-5">
+                        <div class="col-3 my-5 text-center">
                             <input type="number" min="1" class="px-2 rad col-4 input-form" name="quantite" id="quantite" placeholder="1" required>
                         </div>
                         <div class="col my-5">
                             <div class="row">
-                                <div class="mx-2">10.000</div>
-                                <div><i class="fa fa-remove"></i></div>
+                                <div class="col-6">10.000</div>
+                                <div class="col-6 text-end"><i class="fa fa-remove"></i></div>
                             </div>
                         </div>
                     </div>
                     <div class="row justify-content-between">
                         <hr width="100%" size="10px">
-                        <div class="">
-                            <img src="images/panier-02.png" alt="Grazing Services Package" class="img w-100">
+                        <div class="col">
+                            <img src="images/panier-02.png" alt="Grazing Services Package" class="img">
                         </div>
                         <div class="col-2 my-3">
                             <h6><strong>Cattle Feed</strong></h6>
                             <h6 class="">Sliced</h6>
                         </div>
-                        <div class="col-3 my-5">
-                            <select name="#" id="#" class="px-2 rad">
+                        <div class="col-2 my-5">
+                            <select name="#" id="#" class="px-3 rad">
                                 <option value="#">1kg</option>
                                 <option value="#">2kg</option>
                             </select>
                         </div>
-                        <div class="col-3 my-5">
-                            <input type="number" min="1" class="px-2 rad col-4 input-form" name="quantite" id="quantite" placeholder="2" required>
+                        <div class="col-3 my-5 text-center">
+                            <input type="number" min="1" class="px-2 rad col-4 input-form" name="quantite" id="quantite" placeholder="4" required>
                         </div>
                         <div class="col my-5">
                             <div class="row">
-                                <div class="mx-2">$12.39</div>
-                                <div><i class="fa fa-remove"></i></div>
+                                <div class="col-6">$12.39</div>
+                                <div class="col-6 text-end"><i class="fa fa-remove"></i></div>
                             </div>
                         </div>
                     </div>
                     <div class="row justify-content-between">
                         <hr width="100%" size="10px">
-                        <div class="">
-                            <img src="images/panier-03.png" alt="Grazing Services Package" class="img w-100">
+                        <div class="col">
+                            <img src="images/panier-03.png" alt="Grazing Services Package" class="img">
                         </div>
                         <div class="col-2 my-3">
                             <h6><strong>Cow Halter</strong></h6>
                             <h6 class="">Red</h6>
                         </div>
-                        <div class="col-3 my-5">
+                        <div class="col-2 my-5">
                             <select name="#" id="#" class="px-3 rad">
                                 <option value="#">3m</option>
                                 <option value="#">4m</option>
                             </select>
                         </div>
-                        <div class="col-3 my-5">
+                        <div class="col-3 my-5 text-center">
                             <input type="number" min="1" class="px-2 rad col-4 input-form" name="quantite" id="quantite" placeholder="1" required>
                         </div>
                         <div class="col my-5">
                             <div class="row">
-                                <div class="mx-2">$7.29</div>
-                                <div><i class="fa fa-remove"></i></div>
+                                <div class="col-6">$7.29</div>
+                                <div class="col-6 text-end"><i class="fa fa-remove"></i></div>
                             </div>
                         </div>
-                        <hr width="100%" size="10px">
                     </div>
                     <div class="col">
-                        <p class="text-right"><strong>Subtotal: </strong> $35.17</p>
-                        <p class="text-right"><strong>Shipping: </strong> $2.00</p>
-                        <p class="text-right"><strong>Total: </strong> $37.17</p>
+                    <hr width="100%" size="10px">
+                        <div class="row">
+                            <div class="col-10 text-end"><strong>Subtotal:</strong></div>
+                            <div class="col-2 text-start">$35.17</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-10 text-end"><strong>Shipping:</strong></div>
+                            <div class="col-2 text-start">$ 2.00</div>
+                        </div>
+                        <div class="row my-3">
+                            <div class="col-10 text-end"><strong>Total:</strong></div>
+                            <div class="col-2 text-start">$ 37.17</div>
+                        </div>
+                    <hr width="100%" size="10px">
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-12 col-12 bg-success my-5 rad text-light p-3">

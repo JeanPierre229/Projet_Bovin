@@ -48,9 +48,21 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&famil
+    y=Reem+Kufi+Fun:wght@400..700&display=swap" 
+    rel="stylesheet">
     <title>Connexion - WaxangariLabs</title>
 </head>
 <style>
+    *{
+    font-size: 15px;
+    font-family: "Outfit", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    }
     .row-form{
         border: 0;
         background-color: rgb(238, 238, 238);
@@ -103,7 +115,7 @@
                 </div>
                 <div>
                     <div class="text-center">
-                        <button class="btn btn-success px-5 text-dark radius_bouton form-control col-4"><strong>Me connecter</strong></button>
+                        <button class="btn btn-success px-5 text-dark col-4"><strong>Me connecter</strong></button>
                     </div>
                 </div>
             </form>
