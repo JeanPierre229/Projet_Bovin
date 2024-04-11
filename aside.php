@@ -38,12 +38,12 @@
             <option value="#" selected>Nutrients Levels</option>
         </select>
     </div>
-    <div class="my-2 border border-secondary rounded-5 col-12">
+    <div class="my-2 border border-secondary px-0 col-12">
         <div class="row mt-3 justify-content-center">
-            <div>
-                <h5 class="" id="view1">Protein Content</h5>
+            <div class="col-10">
+                <h5 class="" id="view1" style="cursor: pointer;">Protein Content</h5>
             </div>
-            <div>
+            <div class="col-2">
                 <i class="fa fa-angle-down mx-1"></i>
             </div>
         </div>

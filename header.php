@@ -54,7 +54,7 @@
                         <i class="fa fa-bullhorn bg-success p-2 bd"><span class="px-2">Plublier une annonce</span></i>
                     </a>
                 </div>
-                <div class="col text-end">
+                <div class="col text-center">
                     <a href="statistique.php" id="bell"><i class="fa fa-bell"></i></a>
                     <?php if(!empty($_SESSION['profil']) && isset($_SESSION['profil'])){ ?>
                         <span class="mx-2">
@@ -62,10 +62,10 @@
                                 <img src="images/img-profil/<?= $_SESSION['profil'] ?>" alt="" class="img" id="profil">
                             </a>
                         </span>
+                        <span class="mx-2">
+                            <a href="deconnexion.php" id="bell"><i class="fa fa-sign-out" style="font-size: 20px;" title="Deconnecter"></i></a>
+                        </span>
                     <?php } ?>
-                    <span class="mx-2">
-                        <a href="deconnexion.php" id="bell"><i class="fa fa-sign-out" style="font-size: 20px;" title="Deconnecter"></i></a>
-                    </span>
                 </div>
             </div>
         </div>
