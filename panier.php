@@ -1,11 +1,13 @@
 <?php 
-    session_start();  
-
-    if(!empty($_POST) && isset($_POST)){
-        $montant_total = $_POST['quantite1']*10000;
-        $montant_total += $_POST['quantite2']*7000;
-        $montant_total += $_POST['quantite3']*4000;
+    session_start();
+    $id = null;
+    $image = null;
+    $nom_produit = null;
+    $prix = null;
+    if(!empty($_GET)){
+        $id = $_GET['id'];
     }
+    $userId = $_SESSION['id'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,6 +35,9 @@
     }
     .form-toggle{
         border: 1px solid black;
+    }
+    .form-control{
+        border-radius: 0px;
     }
     .bd-input{
         border: 0;
@@ -70,7 +75,7 @@
             <div class="row my-3 p-2 justify-content-between">
                 <div class="col-lg-8 col-md-12 col-12 row-form px-5 py-4">
                     <div>
-                        <h2 class="text-success"><strong>Mon panier</strong></h2>
+                        <h2 class="" style="color: rgb(54, 160, 50);"><strong>Mon panier</strong></h2>
                     </div>
                     <div class="row justify-content-between p-2">
                         <div class="col">
@@ -80,147 +85,135 @@
                             <p>Type</p>
                         </div>
                         <div class="col text-end">
-                            <p>Quantity</p>
+                            <p>Quantité</p>
                         </div>
                         <div class="col text-center">
-                            <p>Price Total</p>
+                            <p>Prix Total</p>
                         </div>
                     </div>
-                    <div class="row justify-content-between">
-                        <hr width="100%" size="10px">
-                        <div class="col">
-                            <img src="images/panier-01.png" alt="Grazing Services Package" class="img">
-                        </div>
-                        <div class="col-2 my-3">
-                            <h6><strong>Grazing Services Package</strong></h6>
-                            <h6 class="">Beige</h6>
-                        </div>
-                        <div class="col-2 my-5">
-                            <select name="#" id="#" class="px-3 rad">
-                                <option value="#">M</option>
-                                <option value="#">F</option>
-                            </select>
-                        </div>
-                        <div class="col-3 my-5 text-center">
-                            <input type="number" min="1" class="px-2 rad col-4 input-form" name="quantite1" id="quantite" placeholder="1" required>
-                        </div>
-                        <div class="col my-5">
-                            <div class="row">
-                                <div class="col-6">10.000</div>
-                                <div class="col-6 text-end"><i class="fa fa-remove"></i></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row justify-content-between">
-                        <hr width="100%" size="10px">
-                        <div class="col">
-                            <img src="images/panier-02.png" alt="Grazing Services Package" class="img">
-                        </div>
-                        <div class="col-2 my-3">
-                            <h6><strong>Cattle Feed</strong></h6>
-                            <h6 class="">Sliced</h6>
-                        </div>
-                        <div class="col-2 my-5">
-                            <select name="#" id="#" class="px-3 rad">
-                                <option value="#">1kg</option>
-                                <option value="#">2kg</option>
-                            </select>
-                        </div>
-                        <div class="col-3 my-5 text-center">
-                            <input type="number" min="1" class="px-2 rad col-4 input-form" name="quantite2" id="quantite" placeholder="4" required>
-                        </div>
-                        <div class="col my-5">
-                            <div class="row">
-                                <div class="col-6">$12.39</div>
-                                <div class="col-6 text-end"><i class="fa fa-remove"></i></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row justify-content-between">
-                        <hr width="100%" size="10px">
-                        <div class="col">
-                            <img src="images/panier-03.png" alt="Grazing Services Package" class="img">
-                        </div>
-                        <div class="col-2 my-3">
-                            <h6><strong>Cow Halter</strong></h6>
-                            <h6 class="">Red</h6>
-                        </div>
-                        <div class="col-2 my-5">
-                            <select name="#" id="#" class="px-3 rad">
-                                <option value="#">3m</option>
-                                <option value="#">4m</option>
-                            </select>
-                        </div>
-                        <div class="col-3 my-5 text-center">
-                            <input type="number" min="1" class="px-2 rad col-4 input-form" name="quantite3" id="quantite" placeholder="1" required>
-                        </div>
-                        <div class="col my-5">
-                            <div class="row">
-                                <div class="col-6">$7.29</div>
-                                <div class="col-6 text-end"><i class="fa fa-remove"></i></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
                     <hr width="100%" size="10px">
-                        <div class="row">
-                            <div class="col-10 text-end"><strong>Subtotal:</strong></div>
-                            <div class="col-2 text-start">$35.17</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-10 text-end"><strong>Shipping:</strong></div>
-                            <div class="col-2 text-start">$ 2.00</div>
-                        </div>
-                        <div class="row my-3">
-                            <div class="col-10 text-end"><strong>Total:</strong></div>
-                            <div class="col-2 text-start">$ 37.17</div>
-                        </div>
-                    <hr width="100%" size="10px">
-                    </div>
+                    <?php
+                        $connect = new PDO('mysql: host=localhost; dbname=bovin_solution', 'root', '');
+                        if($id !== null){
+                            //Etape de la sélection
+                            $requete = $connect->prepare("SELECT * FROM nos_produits WHERE id = '$id';");
+                            $requete->execute();
+                            $row = $requete->fetch();
+
+                            //Etape d'insertion du produit dans la table panier de l'utilisateur
+                            if($requete->rowCount() > 0){
+                                $image = $row['image'];
+                                $nom_produit = $row['nom_produit'];
+                                $prix = $row['prix'];
+                            }
+                            $requete1 = $connect->prepare("
+                                        INSERT INTO panier_$userId(image, nom_produit, prix)
+                                        VALUES('$image', '$nom_produit', '$prix');
+                                        ");
+                            $requete1->execute();
+                        }
+                        
+                            //Etape de l'affichage de la table ou panier vide sinon
+                            $requete2 = $connect->prepare("SELECT * FROM panier_$userId;");
+                            $requete2->execute();
+
+                            if($requete2->rowCount() < 0){
+                                echo '<div class="row">
+                                        <h2>⚠️ Votre panier est vide 🛒 </h2>
+                                      </div>';
+                            }else{
+                                echo '<div class="row justify-content-between">';
+                                while($user_panier = $requete2->fetch()){
+                                        echo    '<div class="col">
+                                                    <img src="images/' .$user_panier['image']. '" alt="Grazing Services Package" class="img w-100">
+                                                </div>
+                                                <div class="col-2 my-3">
+                                                    <h6><strong>' .$user_panier['nom_produit']. '</strong></h6>
+                                                    <h6 class="">Beige</h6>
+                                                </div>
+                                                <div class="col-2 my-5">
+                                                    <select name="#" id="#" class="px-3 rad">
+                                                        <option value="#">M</option>
+                                                        <option value="#">F</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-3 my-5 text-center">
+                                                    <input type="number" min="1" class="px-2 rad col-4 input-form" name="quantite1" id="quantite" placeholder="1" required>
+                                                </div>
+                                                <div class="col my-5">
+                                                    <div class="row">
+                                                        <div class="col-6">' .$user_panier['prix'].'</div>
+                                                        <div class="col-6 text-end">
+                                                            <a href="delete_product.php?id=' .$user_panier['id']. '">
+                                                                <i class="fa fa-remove"></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>';
+                                        echo '<hr width="100%" size="10px">';
+                                    }
+                                echo '</div>';
+                            }
+                            echo '<div class="col">
+                                    <div class="row">
+                                        <div class="col-10 text-end"><strong>Sous-Total:</strong></div>
+                                        <div class="col-2 text-start">$35.17</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-10 text-end"><strong>Livraison:</strong></div>
+                                        <div class="col-2 text-start">$ 2.00</div>
+                                    </div>
+                                    <div class="row my-3">
+                                        <div class="col-10 text-end"><strong>Total:</strong></div>
+                                        <div class="col-2 text-start">$ 37.17</div>
+                                    </div>
+                                <hr width="100%" size="10px">
+                                </div>';
+                    ?>
                 </div>
-                <div class="col-lg-3 col-md-12 col-12 bg-success my-5 rad text-light p-3">
+                <div class="col-lg-3 col-md-12 col-12 my-5 rounded-4 text-light p-3" style="background-color: rgb(54, 160, 50); height: 95vh;">
                     <div>
                         <p>Checkout: </p>
                     </div>
-                    <div class="my-5">
+                    <div class="my-2">
                         <legend>Shipping Details</legend>
                         <div class="row mt-2">
                             <div class="col text-light">
                                 <label class="form-label" for="first_name">First Name</label>
-                                <input class="form-control bd-input bg-success text-light" type="text" name="first_name" id="first_name" value="Jane" required>
+                                <input class="form-control bd-input text-light" style="background-color: rgb(54, 160, 50);" type="text" name="first_name" id="first_name" value="Jane" required>
                             </div>
                             <div class="col">
                                 <label class="form-label" for="last_name">Last Name</label>
-                                <input class="form-control bd-input bg-success text-light" type="text" name="last_name" id="last_name" value="Doe" required>
+                                <input class="form-control bd-input text-light" style="background-color: rgb(54, 160, 50);" type="text" name="last_name" id="last_name" value="Doe" required>
                             </div>
                         </div>
                         <div class="mt-2">
                             <label class="form-label" for="mail">Email</label>
-                            <input class="form-control bd-input bg-success text-light" type="email" name="mail" id="mail" value="jane.doe@gmail.com" required>
+                            <input class="form-control bd-input text-light" style="background-color: rgb(54, 160, 50);" type="email" name="mail" id="mail" value="jane.doe@gmail.com" required>
                         </div>
                         <div class="mt-2">
                             <label class="form-label" for="phone">Phone</label>
-                            <input class="form-control bd-input bg-success text-light" type="text" name="phone" id="phone" value="+1 317 404 5562" required>
+                            <input class="form-control bd-input text-light" style="background-color: rgb(54, 160, 50);" type="text" name="phone" id="phone" value="+1 317 404 5562" required>
                         </div>
                         <div class="mt-2">
                             <label class="form-label" for="addresse">Addresse</label>
-                            <input class="form-control bd-input bg-success text-light" type="text" name="addresse" id="address" value="123 Grazing Street" required>
+                            <input class="form-control bd-input text-light" style="background-color: rgb(54, 160, 50);" type="text" name="addresse" id="address" value="123 Grazing Street" required>
                         </div>
                         <div class="row mt-2">
-                            <div class="col">
+                            <div class="col mb-3">
                                 <label class="form-label" for="code_post">Postal Code</label>
-                                <input class="form-control bd-input bg-success text-light" type="text" name="code_post" id="code_post" value="12345" required>
+                                <input class="form-control bd-input text-light" style="background-color: rgb(54, 160, 50);" type="text" name="code_post" id="code_post" value="12345" required>
                             </div>
-                            <div class="col">
+                            <div class="col mb-3">
                                 <label class="form-label" for="country">Country/Région</label>
-                                <select name="country" id="country" class="form-control bd-input bg-success text-light">
+                                <select name="country" id="country" class="bd-input form-control text-light" style="background-color: rgb(54, 160, 50);">
                                     <option value="#">Nigéria</option>
                                     <option value="#">Bénin</option>
                                     <option value="#">Pays-Bas</option>
                                 </select>
                             </div>
                         </div>
-                        <div class="mt-2">
+                        <div class="mt-2 mb-5">
                             <p>
                                 <span><i class="fa fa-check"></i></span>
                                 <span>Use for Billing</span>
@@ -228,7 +221,7 @@
                         </div>
                         <div>
                             <!-- <button class="btn btn-light form-control rad">Proceed to Payment ></button> -->
-                            <input value="Proceed to Payment >" type="submit" class="btn btn-light form-control rad">
+                            <input value="Procéder au paiement >" type="submit" class="btn btn-light form-control rad">
                         </div>
                     </div>
                 </div>

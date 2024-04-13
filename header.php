@@ -46,12 +46,12 @@
             <div class="row">
                 <div class="col">
                     <a href="accueil.php#location" id="ac">
-                        <i class="fa fa-map-marker bg-success p-2 bd"><span class="px-2">Géolocation</span></i>
+                        <i class="fa fa-map-marker p-2 bd" style="background-color: rgb(54, 160, 50);"><span class="px-2">Géolocation</span></i>
                     </a>
                 </div>
                 <div class="col-5">
                     <a href="publier_annonce.php" id="ac">
-                        <i class="fa fa-bullhorn bg-success p-2 bd"><span class="px-2">Plublier une annonce</span></i>
+                        <i class="fa fa-bullhorn p-2 bd" style="background-color: rgb(54, 160, 50);"><span class="px-2">Plublier une annonce</span></i>
                     </a>
                 </div>
                 <div class="col text-center">

@@ -133,7 +133,7 @@
                         Publiez une annonce sur notre site afin de gagner en visibilité 
                         sur vos services
                     </h4>
-                    <h3><legend class="text-center text-success mt-4">FORMULAIRE DE PUBLILCATION</legend></h3>
+                    <h3><legend class="text-center mt-4" style="color: rgb(54, 160, 50);">FORMULAIRE DE PUBLILCATION</legend></h3>
                     <div class="mt-4">
                         <label for="titre_publication" class="form-label">
                             <strong>Titre de la publication</strong>
@@ -148,11 +148,11 @@
                     </div>
                     <div class="row mt-2 mt-4">
                         <div class="col-8"><strong>Importer une photo pour la publication</strong></div>
-                        <div class="col-2"><button class="btn btn-success py-0 but" id="import-file">Import</button></div>
+                        <div class="col-2"><button class="btn py-0 but" style="background-color: rgb(54, 160, 50);" id="import-file">Import</button></div>
                         <input type="file" name="fichier" id="fichier" style="display: none;">
                     </div>
                     <div class="text-center mt-4">
-                        <button class="btn btn-success px-5 but">Valider la publication</button>
+                        <button class="btn text-light px-5 but" style="background-color: black;">Valider la publication</button>
                     </div>
                 </div>
             </div>

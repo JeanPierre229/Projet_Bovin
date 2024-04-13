@@ -113,12 +113,20 @@
         border: 0;
     }
     .radius_bouton{
-        border-radius: 15px; 
+        border-radius: 15px;
+        padding-left: 100px;
+        padding-right: 100px;
+    }
+    .radius_bouton:hover{
+        background-color: rgb(54, 160, 50);
+    }
+    .color-green{
+        background-color: rgb(54, 160, 50);
     }
 </style>
 <body>
     <section class="my-5">
-        <h1 class="text-center">Inscription à <span class="text-success">BovinSolution</span></h1>
+        <h1 class="text-center">Inscription à <span class="h1" style="color: rgb(84, 247, 78)">BovinSolution</span></h1>
         <div class="container my-5">
             <form action="inscription.php" method="post">
                 <div class="row">
@@ -129,15 +137,15 @@
                         </div>
                         <div class="my-2">
                             <label class="form-label" for="Ville"><strong>Ville</strong></label>
-                            <input class="form-control input_color" type="text" placeholder="Saississez la ville où vous résidez" name="ville" id="ville" required>
+                            <input class="form-control input_color py-3" type="text" placeholder="Saississez la ville où vous résidez" name="ville" id="ville" required>
                         </div>
                         <div class="my-2">
                             <label class="form-label" for="telephone"><strong>Numéro de téléphone</strong></label>
-                            <input class="form-control input_color" type="tel" placeholder="Ex : 55555555" name="telephone" id="telephone" required> 
+                            <input class="form-control input_color py-3" type="tel" placeholder="Ex : 55555555" name="telephone" id="telephone" required> 
                         </div>
                         <div class="my-2">
                             <label class="form-label" for="email"><strong>Email</strong></label>
-                            <input class="form-control input_color" type="text" placeholder="Ex : johndoe@gmail.com" name="email" id="email" required>
+                            <input class="form-control input_color py-3" type="text" placeholder="Ex : johndoe@gmail.com" name="email" id="email" required>
                         </div>
                         <?php if($mailError){ ?>
                             <p class="text-danger">
@@ -146,11 +154,11 @@
                         <?php } ?>
                         <div class="my-2">
                             <label class="form-label" for="mot_de_passe"><strong>Mot de passe</strong></label>
-                            <input class="form-control input_color" type="password" placeholder="Ex : ******" name="motDePasse" id="mot_de_passe" required>
+                            <input class="form-control input_color py-3" type="password" placeholder="Ex : ******" name="motDePasse" id="mot_de_passe" required>
                         </div>
                         <div class="my-2">
                             <label class="form-label" for="mot_de_passe_confirmed"><strong>Confirmer Mot de passe</strong></label>
-                            <input class="form-control input_color" type="password" placeholder="Ex : ******" name="motDePasse_confirmed" id="mot_de_passe_confirmed" required>
+                            <input class="form-control input_color py-3" type="password" placeholder="Ex : ******" name="motDePasse_confirmed" id="mot_de_passe_confirmed" required>
                         </div>
                         <?php if($mpError){ ?>
                             <p class="text-danger">
@@ -158,20 +166,20 @@
                             </p>
                         <?php } ?>
                     </div>
-                    <div class="col-6">
+                    <div class="col-6 mt-5">
                         <div class="text-center my-2">
-                            <img class="img w-75" src="images/bovin_inscription.png" alt="image sur la page d'inscription">
+                            <img class="img w-50" src="images/bovin_inscription.png" alt="image sur la page d'inscription">
                         </div>
-                        <div class="mx-5">
-                            <input type="checkbox" name="access" id="access" required="required" checked>
+                        <div class="mx-5 my-3">
+                            <input type="checkbox" name="access" id="access" required="required">
                             <label for="accepter_condition">J'accepte les termes de confidentialité du site</label>
                         </div>
-                        <div class="mx-5">
-                            <input type="checkbox" name="inscrit" id="inscrit" required="required" checked>
+                        <div class="mx-5 my-3">
+                            <input type="checkbox" name="inscrit" id="inscrit" required="required">
                             <label for="accepter_newsletter">Je souhaite m'inscrire à la newsletter</label>
                         </div>
                         <div class="text-center">
-                            <button class="btn btn-success px-5 radius_bouton">Valider inscription</button>
+                            <button class="btn color-green radius_bouton py-3  "><strong>Valider Inscription</strong></button>
                         </div>
                     </div>
                 </div>

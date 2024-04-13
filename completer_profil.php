@@ -150,20 +150,20 @@
                                 <a href="accueil.php"><i class="fa fa-arrow-left text-dark" style="font-size: 20px;"></i></a>
                             </div>
                             <div>
-                                <h1 class="text-center text-success">Complétez votre profil</h1>
+                                <h1 class="text-center" style='color: rgb(84, 247, 78);'>Complétez votre profil</h1>
                             </div>
                         </div>
                         
                             <div class="my-3">
                                 <label class="form-label" for="nom_prenoms">
-                                    <i class="fa fa-arrow-right rad bg-success text-light p-1"></i>
+                                    <i class="fa fa-arrow-right rad text-light p-1" style="background-color: rgb(84, 247, 78);"></i>
                                     <strong>Modifier votre nom et prénoms</strong>
                                 </label>
                                 <input class="form-control row-form py-3 mx-3" type="text" value="<?= $_SESSION['nom_prenoms'] ?>" name="nom_prenoms" id="nom_prenoms" required>
                             </div>
                             <div class="my-3">
                                 <label class="form-label" for="nom_prenoms">
-                                    <i class="fa fa-arrow-right rad bg-success text-light p-1"></i>
+                                    <i class="fa fa-arrow-right rad text-light p-1" style="background-color: rgb(84, 247, 78);"></i>
                                     <strong>Modifier votre email</strong>
                                 </label>
                                 <input class="form-control row-form py-3 mx-3" type="email" value="<?= $_SESSION['mail'] ?>" name="email" id="email" required>
@@ -175,14 +175,14 @@
                             <?php endif ?>
                             <div class="my-3">
                                 <label class="form-label" for="nom_prenoms">
-                                    <i class="fa fa-arrow-right rad bg-success text-light p-1"></i>
+                                    <i class="fa fa-arrow-right rad text-light p-1" style="background-color: rgb(84, 247, 78);"></i>
                                     <strong>Numéro de Téléphone</strong>
                                 </label>
                                 <input class="form-control row-form py-3 mx-3" type="text" value="<?= $_SESSION['tel'] ?>" name="telephone" id="telephone" required>
                             </div>
                             <div class="my-3">
                                 <label class="form-label" for="nom_prenoms">
-                                    <i class="fa fa-arrow-right rad bg-success text-light p-1"></i>
+                                    <i class="fa fa-arrow-right rad text-light p-1" style="background-color: rgb(84, 247, 78);"></i>
                                     <strong>Quelle est votre profession ?</strong>
                                 </label>
                                 <input class="form-control row-form py-3 mx-3" type="text" value="<?php if(empty($_SESSION['profession'])){ ?> Elevatrice des boeufs <?php }else{
@@ -228,7 +228,7 @@
                             </p>
                         </div>
                         <div class="text-center">
-                            <button class="btn btn-success text-dark">Modifier Informations</button>
+                            <button class="btn text-dark" style="background-color: rgb(84, 247, 78);">Modifier Informations</button>
                         </div>
                     </div>
                 </div>

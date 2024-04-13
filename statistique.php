@@ -69,7 +69,7 @@
     <section>
         <div class="container">
             <div class="row">
-                <div class="col-lg-2 col-md-4 col-4 bg-success bg">
+                <div class="col-lg-2 col-md-4 col-4 bg" style="background-color: rgb(54, 160, 50);">
                     <strong><h1 class="text-center text-light mt-3">Bovin Solution</h1></strong>
                 </div>
                 <div class="col-lg-10 col-md-8 col-8">
@@ -83,13 +83,13 @@
                                     <button class="btn btn-light border border-dark bg-light">Voir l'historique</button>
                                 </div>
                                 <div class="col-lg-4 col-md-4 col-10 my-2">
-                                    <button class="btn btn-success text-light">Nouvelle entrée</button>
+                                    <button class="btn text-light" style="background-color: rgb(54, 160, 50);">Nouvelle entrée</button>
                                 </div>
                             </div>
                             <div class="row my-3 div-form p-3 justify-content-between">
                                 <div class="bg-light border border-dark p-3 mx-2 rad col-lg-3 col-md-3 col-12 my-2">
                                     <p class="text-center">Dépenses Annuelles</p>
-                                    <h5 class="text-center text-success"><strong>300.750 FCFA</strong></h5>
+                                    <h5 class="text-center" style="color: rgb(54, 160, 50);"><strong>300.750 FCFA</strong></h5>
                                 </div>
                                 <div class="bg-light border border-dark p-3 mx-2 rad col-lg-3 col-md-3 col-12 my-2">
                                     <p class="text-center">Nombre total de troupeau</p>
@@ -101,7 +101,7 @@
                                 </div>
                             </div>
                             <div class="top mx-5">
-                                <i class="fa fa-arrow-down text-success" style="font-size: 50px;"></i>
+                                <i class="fa fa-arrow-down" style="color: rgb(54, 160, 50); font-size: 50px;"></i>
                             </div>
                             <div>
                                 <img src="images/statistique.png" alt="Une statistique !" class="img w-100">
@@ -129,15 +129,15 @@
                                         </p>
                                     <?php endif ?>
                                     <div class="mt-2">
-                                        <label for="titre" class="form-label text-success">Titre de l'achat</label>
+                                        <label for="titre" class="form-label" style="color: rgb(54, 160, 50);">Titre de l'achat</label>
                                         <input type="text" class="form-control input-form" name="titre" id="titre" required>
                                     </div>
                                     <div class="mt-2">
-                                        <label for="prix" class="form-label text-success">Prix de l'investissement</label>
+                                        <label for="prix" class="form-label" style="color: rgb(54, 160, 50);">Prix de l'investissement</label>
                                         <input type="text" class="form-control input-form" name="prix" id="prix" required>
                                     </div>
                                     <div class="text-center">
-                                        <input type="submit" value="Ajouter" class="mt-3 text-light bg-success py-0 px-5 btn">
+                                        <input type="submit" value="Ajouter" style="background-color: rgb(54, 160, 50);" class="mt-3 text-light py-0 px-5 btn">
                                     </div>
                                 </form>
                             </div>

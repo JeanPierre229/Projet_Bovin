@@ -1,10 +1,10 @@
 <?php
     session_start();
     function case_alimaux($title_image, $alt, $description){
-        echo '<div class="col-3 case_border m-4 py-3 text-center">
+        echo '<div class="col-3 case_border shadow m-4 py-3 text-center">
                 <img src="'.$title_image.'" alt="'.$alt.'" class="img w-100">
                 <p class="text-center">'.$description.'</p>
-                <button class="btn btn-success">Acheter</button>
+                <button class="btn rounded-5 px-3" style="background-color: rgb(54, 160, 50);">Acheter</button>
             </div>
         ';
 
@@ -67,16 +67,16 @@
                 <div class="col-10 ">
                     <div class="row">
                         <div class="col-3">
-                            <button class="btn btn-success">Beef Cattle</button>
+                            <button class="btn rounded-5 text-light px-5" style="background-color: rgb(54, 160, 50);">Beef Cattle</button>
                         </div>
                         <div class="col-3">
-                            <button class="btn btn-success">Dairy Cattle</button>
+                            <button class="btn rounded-5 text-light px-5" style="background-color: rgb(54, 160, 50);">Dairy Cattle</button>
                         </div>
                         <div class="col-3">
-                            <button class="btn btn-success">Cattle Feed</button>
+                            <button class="btn rounded-5 text-light px-5" style="background-color: rgb(54, 160, 50);">Cattle Feed</button>
                         </div>
                         <div class="col-3">
-                            <button class="btn btn-success">Livestock Supplements</button>
+                            <button class="btn rounded-5 text-light px-3" style="background-color: rgb(54, 160, 50);">Livestock Supplements</button>
                         </div>
                     </div>
                     <div class="row mx-auto">
@@ -93,11 +93,11 @@
             </div>
         </section>
 
-        <section class=" decouvrir_gamme my-3 rounded-5">
+        <section class=" decouvrir_gamme my-3 rounded-2">
             <div class="row">
-                <div class="col-6 p-5">
-                    <h1 class="text-success">Découvrez notre gamme</h1>
-                    <p>
+                <div class="col-7 p-5">
+                    <h1 class="" style="color: rgb(54, 160, 50);">Découvrez notre gamme</h1>
+                    <p class="my-3 col-11">
                         Explore the world of cattle farming with our diverse
                         selection of products and service. From grazing
                         essentials to health care, find everything you need for
@@ -105,8 +105,8 @@
                         guaranteed.
                     </p>
                 </div>
-                <div class="col-6">
-                    <img src="images/Image (22).png" alt="Image d'un agriculteur" class="img w-100">
+                <div class="col-5">
+                    <img src="images/Image (22).png" alt="Image d'un agriculteur" class="img w-100 px-5">
                 </div>
             </div>
         </section>

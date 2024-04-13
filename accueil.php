@@ -71,7 +71,7 @@
     <main>
         <div class="row bg mt-3">
             <div class="col-lg-4 col-8 col-md-4 p-lg-5 p-md-5 p-5 mb-5 mb-lg-5 mb-md-5">
-                <h3 class="text-success mb-lg-2 mb-md-2"><strong>BovinSolution</strong></h3>
+                <strong><h3 class="mb-lg-2 mb-md-2" style="color: rgb(54, 160, 50);">BovinSolution</h3></strong>
                 <p class="text-light mb-lg-5 mb-0 mb-md-5">
                     Nous vous facilitons l'accès aux ressources et
                     informations concernant l'élevage au Bénin
@@ -90,47 +90,30 @@
                 </div>
             </form>
         </div>
-        <div class="row text-success h-line">
-            <h6 class="col-10">Catégories-Achat</h6>
-            <h6 class="col-2 text-end">Voir tout</h6>
+        <div class="row h-line" style="color: rgb(54, 160, 50);">
+            <h6 class="col-10 h3">Catégories-Achat</h6>
+            <h6 class="col-2 h3 text-end">Voir tout</h6>
         </div>
         <div class="row">
-            <div class="mx-5 p-0 col-lg-2 col-md-4 col-12 my-2" style="border: 1px solid gray; border-radius: 15px;">
-                <p class='text-center'>
-                    <img src="images/lait-vache.png" alt="Une image de lait de vache" id="img-ac" class="img w-100 mb-lg-5">
-                </p>
-                <h4 class="text-center">Lait de vache</h4>
-                <p class="text-center">
-                    <button class="btn btn-success px-3 py-0">Ajouter au panier</button>
-                </p>
-            </div>
-            <div class="mx-5 p-0 col-lg-2 col-md-4 col-12 my-2" style="border: 1px solid gray; border-radius: 15px;">
-                <p class='text-center'>
-                    <img src="images/fromage.png" alt="Une image de fromage" id="img-ac" class="img w-100 mb-lg-5">
-                </p>
-                <h4 class="text-center">Fromage</h4>
-                <p class="text-center">
-                    <button class="btn btn-success px-3 py-0">Ajouter au panier</button>
-                </p>
-            </div>
-            <div class="mx-5 p-2 col-lg-2 col-md-4 col-12 my-2" style="border: 1px solid gray; border-radius: 15px;">
-                <p class='text-center'>
-                    <img src="images/oeuf.png" alt="Une image d'oeuf" id="img-ac" class="img w-100">
-                </p>
-                <h4 class="text-center">Oeuf</h4>
-                <p class="text-center">
-                    <button class="btn btn-success px-3 py-0">Ajouter au panier</button>
-                </p>
-            </div>
-            <div class="mx-5 p-2 col-lg-2 col-md-4 col-12 my-2" style="border: 1px solid gray; border-radius: 15px;">
-                <p class='text-center mb-lg-5 mb-md-5'>
-                    <img src="images/poisson.png" alt="Une image d'oeuf" id="img-ac" class="img w-100 mb-lg-5 mb-md-5">
-                </p>
-                <h4 class="text-center">Poisson</h4>
-                <p class="text-center">
-                    <button class="btn btn-success px-3 py-0">Ajouter au panier</button>
-                </p>
-            </div>
+            <?php
+                $connect = new PDO('mysql: host=localhost; dbname=bovin_solution', 'root', '');
+                $requete = $connect->prepare("SELECT * FROM nos_produits;");
+                $requete->execute();
+                
+                while($row = $requete->fetch()){
+                    echo    '<div class="mx-5 p-0 col-lg-2 col-md-4 col-12 my-2" style="border: 1px solid gray; border-radius: 15px;">
+                                <form action="panier.php?id=' .$row['id']. '" method="post">
+                                    <p class="text-center">
+                                        <img src="images/' .$row['image']. '" style="width: 150px; height: 150px;" alt="Une image de lait de vache" id="img-ac" class="img w-100">
+                                    </p>
+                                    <h4 class="text-center">' .$row['nom_produit']. '</h4>
+                                    <p class="text-center">
+                                        <button name="but" class="btn px-3 py-0 " style="background-color: rgb(54, 160, 50);">Ajouter au panier</button>
+                                    </p>
+                                </form>
+                            </div>';
+                }
+            ?>
         </div>
         <div class="row bg-secondary m-2 text-center">
             <h4 class="text-light p-2" id="location">Annuaire géolocalisé des marchés du bétails</h4>
@@ -168,7 +151,7 @@
                 </div>
             </div>
         </div>
-        <div class="row bg-success px-2">
+        <div class="row px-2" style="background-color: rgb(54, 160, 50);">
             <div class="mx-auto my-3">
                 <strong class="text-light"><h2>Annonce</h2></strong>
             </div>

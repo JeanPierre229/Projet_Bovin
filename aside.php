@@ -38,18 +38,18 @@
             <option value="#" selected>Nutrients Levels</option>
         </select>
     </div>
-    <div class="my-2 border border-secondary px-0 col-12">
-        <div class="row mt-3 justify-content-center">
+    <div class="my-2 border border-secondary shadow rounded-4 col-12">
+        <div class="row mt-3">
             <div class="col-10">
-                <h5 class="" id="view1" style="cursor: pointer;">Protein Content</h5>
+                <p class="text-secondary px-1" id="view1" style="cursor: pointer;">Protein Content</p>
             </div>
-            <div class="col-2">
-                <i class="fa fa-angle-down mx-1"></i>
+            <div class="col-1 px-1">
+                <i class="fa fa-angle-up"></i>
             </div>
         </div>
         <div class="row hide1 justify-content-center my-2" id="hide1">
             <div>
-                <span class="mx-1"><input type="checkbox" name="#" id="#" checked></span>
+                <span class="mx-1 text-dark"><input type="checkbox" name="#" id="#" checked></span>
                 <span class="">Energy Boosting</span>
             </div>
             <div>

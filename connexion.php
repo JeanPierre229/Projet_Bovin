@@ -73,14 +73,18 @@
         width: 60%;
         height: 60%;
     }
+    .but-con{
+        padding-left: 100px;
+        padding-right: 100px;
+    }
 </style>
 <body>
     <section class="my-5">
-        <div class="container my-5">
-            <h1 class="text-center">Connexion à <span class="text-success">BovinSolution</span></h1>
+        <div class="container">
+            <h1 class="text-center">Connexion à <span class="h1" style="color: rgb(84, 247, 78);">BovinSolution</span></h1>
             <form action="connexion.php" method="post">
-                <div class="row">
-                    <div class="col-lg-6 col-md-12 col-12">
+                <div class="row mt-5">
+                    <div class="col-lg-7 col-md-12 col-12">
                             <?php if($errorConnect){ ?>
                                 <p class="alert alert-danger mt-5">
                                     <?= $errorConnect ?>
@@ -100,22 +104,22 @@
                             </div>
                             <div>
                                 <p>
-                                    Vous n'avez pas encore un compte ? <span><a href="inscription.php" class="text-success">S'inscrire !</a></span>
+                                    Vous n'avez pas encore un compte ? <span><a href="inscription.php" class="" style="color: rgb(84, 247, 78); text-decoration: none;">S'inscrire !</a></span>
                                 </p>
                                 <p>
-                                    Vous avez oublié votre mot de passe ? <span><a href="#" class="text-success">Cliquer ici</a></span>
+                                    Vous avez oublié votre mot de passe ? <span><a href="#" class="" style="color: rgb(84, 247, 78); text-decoration: none;">Cliquer ici</a></span>
                                 </p>
                             </div>
                     </div>
-                    <div class="col-lg-6 col-md-12 col-12">
-                        <div>
+                    <div class="col-lg-5 col-md-12 col-12">
+                        <div class="text-center">
                             <img class="img img-form" src="images/bovin_connexion.png" alt="image sur la page d'inscription">
                         </div>
                     </div>
                 </div>
-                <div>
+                <div class="col">
                     <div class="text-center">
-                        <button class="btn btn-success px-5 text-dark col-4"><strong>Me connecter</strong></button>
+                        <button class="btn rounded-4 but-con py-3 text-dark " style="background-color: rgb(54, 160, 50); font-size: 20px; font-weight: bold;">Me connecter</button>
                     </div>
                 </div>
             </form>

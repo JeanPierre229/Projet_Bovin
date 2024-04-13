@@ -10,7 +10,7 @@
 <footer>
     <div class="row p-4 my-2">
         <div class="col-lg-4 col-md-6 col-12 my-2">
-            <strong><h2 class="text-success">BovinSolution</h2></strong>
+            <strong><h2 class="" style="color: rgb(54, 160, 50);">BovinSolution</h2></strong>
             <strong><p class="h3">Copywrite 2024</p></strong>
             <a href="signaler_probleme.php" id="a">
                 <strong><p class="h3">Signaler Un Problème</p></strong>
