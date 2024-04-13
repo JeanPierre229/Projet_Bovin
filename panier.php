@@ -117,10 +117,11 @@
                             $requete2 = $connect->prepare("SELECT * FROM panier_$userId;");
                             $requete2->execute();
 
-                            if($requete2->rowCount() < 0){
+                            if($requete2->rowCount() == 0){
                                 echo '<div class="row">
-                                        <h2>⚠️ Votre panier est vide 🛒 </h2>
+                                        <h2 class="text-center my-5">⚠️ Votre panier est vide 🛒 </h2>
                                       </div>';
+                                echo '<hr width="100%" size="10px">';
                             }else{
                                 echo '<div class="row justify-content-between">';
                                 while($user_panier = $requete2->fetch()){
@@ -140,9 +141,18 @@
                                                 <div class="col-3 my-5 text-center">
                                                     <input type="number" min="1" class="px-2 rad col-4 input-form" name="quantite1" id="quantite" placeholder="1" required>
                                                 </div>
+                                                <script>
+                                                    const quantite = document.getElementById("quantite");
+                                                    quantite.addEventListener("input", function(event){
+                                                        const val = event.target.value;
+                                                        const prixUnitairePHP = ' . $user_panier['prix'] . '; // Récupérer le prix unitaire PHP
+                                                        const prixTotal = val * prixUnitairePHP; // Calculer le prix total
+                                                        document.getElementById("prixTotalPHP").textContent = prixTotal; // Afficher le prix total dans la page HTML
+                                                    });
+                                                </script>
                                                 <div class="col my-5">
                                                     <div class="row">
-                                                        <div class="col-6">' .$user_panier['prix'].'</div>
+                                                        <div class="col-6" id="prixTotalPHP">' .$user_panier['prix'].'</div>
                                                         <div class="col-6 text-end">
                                                             <a href="delete_product.php?id=' .$user_panier['id']. '">
                                                                 <i class="fa fa-remove"></i>
