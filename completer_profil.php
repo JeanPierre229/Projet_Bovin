@@ -40,10 +40,10 @@
                 $extension = array('jpg', 'png', 'jpeg', 'gif');
                 $image_ext = strtolower(pathinfo($image_path, PATHINFO_EXTENSION));
         
-                if(!in_array($image_ext, $extension)){
-                    $imageErreur = "Le fichier doit être sous l'un de ces formats: .jpg, .png, .jpeg, et .gif";
-                    $upload = false;
-                }
+                // if(!in_array($image_ext, $extension)){
+                //     $imageErreur = "Le fichier doit être sous l'un de ces formats: .jpg, .png, .jpeg, et .gif";
+                //     $upload = false;
+                // }
         
                 if(file_exists($image_path)){
                     $imageErreur = "Cette image existe déjà !";

@@ -1,3 +1,4 @@
+
 <aside class="mx-5">
     <div class="col-8">
         <select name="#" id="#" class="border border-dark px-4 py-2  rad">
@@ -13,18 +14,18 @@
                 <i class="fa fa-angle-down"></i>
             </div>
         </div>
-        <div class="row hide" id="text-hide">
-            <div>
-                <span class="">Ships in 24h</span>
-                <span class="mx-4"><input type="checkbox" name="#" id="#" checked></span>
+        <div class="col hide" id="text-hide">
+            <div class="row">
+                <div class="col ">Ships in 24h</div>
+                <div class="col mx-4"><input type="checkbox" name="#" id="#" checked></div>
             </div>
-            <div>
-                <span class="">Ending soon</span>
-                <span class="mx-4"><input type="checkbox" name="#" id="#"checked></span>
+            <div class="row">
+                <div class="col ">Ending soon</div>
+                <div class="col mx-4"><input type="checkbox" name="#" id="#"checked></div>
             </div>
-            <div>
-                <span class="pr-4">Nouveau</span>
-                <span class="mx-4"><input type="checkbox" name="#" id="#" checked></span>
+            <div class="row">
+                <div class="col pr-4">Nouveau</div>
+                <div class="col mx-4"><input type="checkbox" name="#" id="#" checked></div>
             </div>
         </div>
     </div>
@@ -37,14 +38,14 @@
                 <i class="fa fa-angle-down"></i>
             </div>
         </div>
-        <div class="row hide1" id="hide1">
-            <div >
-                <span class="">Produit Bios</span>
-                <span class="mx-4"><input type="checkbox" name="#" id="#" checked></span>
+        <div class="col hide1" id="hide1">
+            <div class="row">
+                <div class="col">Produit Bios</div>
+                <div class="col mx-4"><input type="checkbox" name="#" id="#" checked></div>
             </div>
-            <div class="">
-                <span class="pr-5">Lait</span>
-                <span class="mx-4"><input type="checkbox" name="#" id="#" checked></span>
+            <div class="row">
+                <div class="col pr-5">Lait</div>
+                <div class="col mx-4"><input type="checkbox" name="#" id="#" checked></div>
             </div>
         </div>
     </div>

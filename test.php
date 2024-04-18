@@ -1,28 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>    
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/font-awesome.css">
-    <script src="https://cdn.kkiapay.me/k.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
 <body>
-    <div class="container">
-        <div class="row">
-            <form action="test.php" method='post' class="formulaire">
-                <div class="my-2">
-                    <label for="montant" class="form-label">Ajoutez le montant</label>
-                    <input type="number" class="form-control" min="0" name="montant" id="montant" required>
-                </div>
-                <div>
-                    <button class="btn btn-primary">Payer maintenant !</button>
-                </div>
-            </form>
-        </div>
-    </div>
+  <form action="test.php" method="post" enctype="multipart/form-data">
+    <input type="file" name="video" accept="video/*">
+    <input type="submit" value="Envoyer">
+  </form>
 </body>
 </html>
-<script src="main.js"></script>
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $video = $_FILES["video"];
+    $uploadDir = "images/";
+
+    if ($video["error"] == UPLOAD_ERR_OK && $video["type"] == "video/mp4") {
+        $uploadPath = $uploadDir . basename($video["name"]);
+        move_uploaded_file($video["tmp_name"], $uploadPath);
+        echo "La vidéo a été téléchargée avec succès !";
+    } else {
+        echo "Erreur lors du téléchargement de la vidéo.";
+    }
+}
+?>

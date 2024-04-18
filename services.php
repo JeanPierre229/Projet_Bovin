@@ -59,6 +59,7 @@
     .hide1{
         display: none;
     }
+    
 </style>
 <body class="container">
     <header>            
@@ -70,24 +71,24 @@
             <div>
                 <a href="accueil.php"><i class="fa fa-arrow-left" style="font-size: 35px;"></i></a>
             </div>
-            <div class="mx-auto">
+            <div class="text-center">
                 <p class="h4">Search results for "Grazing Services"</p>
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-5 col-md-6 col-12">
+            <div class="col-lg-4 col-md-6 col-12">
                 <?php require "aside1.php"; ?>
             </div>
             <div class="col-lg-7 col-md-6 col-12">
-                <div class="row">
-                    <div class="col-5 row-form mr-4">
+                <div class="row d-flex justify-content-between my-5">
+                    <div class="col-5 row-form">
                         <p class="container">
                             <img src="images/boeuf.png" alt="" class="img img-service">
                             <h6 class="text-success px-3">Service rating</h6>
                         </p>
                         <div class="row justify-content-between px-4">
-                            <div class="">4.5 stars</div>
-                            <div class="text-success">Available now</div>
+                            <div class="col">4.5 stars</div>
+                            <div class="col text-success">Available now</div>
                         </div>
                     </div>
                     <div class="col-5 row-form">
@@ -96,20 +97,20 @@
                             <h6 class="text-success px-3">Service rating</h6>
                         </p>
                         <div class="row justify-content-between px-4 pb-2">
-                            <div class="">4.5 stars</div>
-                            <div class="text-success">20.000 FCFA</div>
+                            <div class="col">4.5 stars</div>
+                            <div class="col text-success">20.000 FCFA</div>
                         </div>
                     </div>
                 </div>
-                <div class="row my-3">
+                <div class="row my-3 d-flex justify-content-between my-5">
                     <div class="col-5 row-form mr-4">
                         <p class="container">
                             <img src="images/cheval.png" alt="" class="img img-service">
                             <h6 class="text-success px-3">Service rating</h6>
                         </p>
                         <div class="row justify-content-between px-4 pb-2">
-                            <div class="">4.5 stars</div>
-                            <div class="text-success">Available now</div>
+                            <div class="col">4.5 stars</div>
+                            <div class=" col text-success">Available now</div>
                         </div>
                     </div>
                     <div class="col-5 row-form">
@@ -118,20 +119,20 @@
                             <h6 class="text-success px-3">Service rating</h6>
                         </p>
                         <div class="row justify-content-between px-4 pb-2">
-                            <div class="">4.5 stars</div>
-                            <div class="text-success">20.000 FCFA</div>
+                            <div class="col">4.5 stars</div>
+                            <div class="col text-success">20.000 FCFA</div>
                         </div>
                     </div>
                 </div>
-                <div class="row my-3">
+                <div class="row my-3 d-flex justify-content-between my-5">
                     <div class="col-5 row-form mr-4">
                         <p class="container">
                             <img src="images/plantes.png" alt="" class="img img-service">
                             <h6 class="text-success px-3">Service rating</h6>
                         </p>
                         <div class="row justify-content-between px-4 pb-2">
-                            <div class="">4.5 stars</div>
-                            <div class="text-success">Available now</div>
+                            <div class="col">4.5 stars</div>
+                            <div class="col text-success text-end">Available now</div>
                         </div>
                     </div>
                     <div class="col-5 row-form">
@@ -140,8 +141,8 @@
                             <h6 class="text-success px-3">Service rating</h6>
                         </p>
                         <div class="row justify-content-between px-4 pb-2">
-                            <div class="">4.5 stars</div>
-                            <div class="text-success">Available now</div>
+                            <div class="col">4.5 stars</div>
+                            <div class="col text-success text-end">Available now</div>
                         </div>
                     </div>
                 </div>

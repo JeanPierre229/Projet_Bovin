@@ -7,9 +7,11 @@
     if(!empty($_GET)){
         $id = $_GET['id'];
     }
+    if(!empty($_POST)){
+        $montant_total = 10000;
+    }
     if(!empty($_SESSION)){
         $userId = $_SESSION['id'];
-    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -68,9 +70,6 @@
         padding-left: 50px;
     }
 </style>
-<?php
-    if(!empty($_SESSION)){
-    ?>
 <body class="container">
     <header>
         <?php require "header.php"; ?>
@@ -120,7 +119,7 @@
                         ?>
                         <?php 
                             //Etape de l'affichage de la table ou panier vide sinon
-                            $requete2 = $connect->prepare("SELECT * FROM panier_$userId;");
+                            $requete2 = $connect->prepare("SELECT * FROM `panier_$userId`;");
                             $requete2->execute();
 
                             if($requete2->rowCount() == 0){
@@ -247,10 +246,11 @@
     <footer>
         <?php require "footer.php" ?>
     </footer>
-    <?php }else{
-                    header("Location: connexion.php");
-                }
-                ?>
+    <?php 
+        }else{
+            header("Location: connexion.php");
+        }
+    ?>
 </body>
 </html>
 <script>
